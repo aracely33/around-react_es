@@ -1,0 +1,18 @@
+.item {
+  min-width: 282px;
+  max-height: 361px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  position: relative;
+}
+
+@media screen and (max-width: 321px) {
+  .item {
+    width: 100%;
+  }
+}
