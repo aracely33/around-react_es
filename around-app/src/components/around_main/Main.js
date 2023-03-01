@@ -59,22 +59,24 @@ function Main(props) {
         title="Editar perfil"
         action="Guardar"
       >
-        <input
-          type="text"
-          className="form__input form__input_info-name popup__input"
-          placeholder="Nombre"
-          name="nombre"
-          value="Jaques Costeau"
-          id="nombre"
-          required
-          minlength="2"
-          maxlength="40"
-        />
-        <span className="popup__error nombre-error"></span>
-        <div className="form__field">
+        <div class="form__field">
           <input
             type="text"
-            className="form__input form__input_info-occupation popup__input"
+            class="form__input form__input_info-name popup__input"
+            placeholder="Nombre"
+            name="nombre"
+            value="Jaques Costeau"
+            id="nombre"
+            required
+            minlength="2"
+            maxlength="40"
+          />
+          <span class="popup__error nombre-error"></span>
+        </div>
+        <div class="form__field">
+          <input
+            type="text"
+            class="form__input form__input_info-occupation popup__input"
             placeholder="Acerca de mi"
             name="ocupación"
             value="Explorer"
@@ -83,21 +85,61 @@ function Main(props) {
             minlength="2"
             maxlength="200"
           />
-          <span className={`popup__error ocupación-error`}></span>
+          <span class="popup__error ocupación-error"></span>
         </div>
       </PopupWithForm>
 
-      <PopupWithForm name="form-new-place" title="Nuevo lugar" action="Crear" />
+      <PopupWithForm name="form-new-place" title="Nuevo lugar" action="Crear">
+        <div class="form__field">
+          <input
+            type="text"
+            id="title"
+            class="form__input form__input_newplace-title popup__input"
+            placeholder="Título"
+            name="title"
+            value=""
+            required
+            minlength="2"
+            maxlength="30"
+          />
+          <span class="popup__error title-error"></span>
+        </div>
+        <div class="form__field">
+          <input
+            id="image"
+            class="form__input form__input_newplace-url popup__input"
+            placeholder="Enlace a la imagen"
+            name="image"
+            type="url"
+            value=""
+            required
+          />
+          <span class="popup__error image-error"></span>
+        </div>
+      </PopupWithForm>
       <PopupWithForm
         name="form-delete-card-ask"
         title=" ¿Estás seguro?"
         action="Sí"
-      />
+      ></PopupWithForm>
       <PopupWithForm
         name="form-change-profile-avatar"
         title="Cambiar foto de perfil"
         action=" Guardar"
-      />
+      >
+        <div class="form__field">
+          <input
+            id="avatar"
+            class="form__input form__input_new-avatar-url popup__input"
+            placeholder="Enlace a la imagen del avatar"
+            name="avatar"
+            type="url"
+            value=""
+            required
+          />
+          <span class="popup__error avatar-error"></span>
+        </div>
+      </PopupWithForm>
 
       <div className="popup popup_type-image">
         <div className="popup__container popup__container_function-image">
