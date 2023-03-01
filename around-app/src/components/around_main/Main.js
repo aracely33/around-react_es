@@ -1,5 +1,6 @@
 import React from "react";
 import PopupWithForm from "../popupWithForm/PopupWithForm";
+import ImagePopup from "../imagePopup/ImagePopUp";
 import "./Main.css";
 
 function handleEditAvatarClick(e) {
@@ -141,17 +142,7 @@ function Main(props) {
         </div>
       </PopupWithForm>
 
-      <div className="popup popup_type-image">
-        <div className="popup__container popup__container_function-image">
-          <button type="button" className="close-button pointer"></button>
-          <img
-            src=" "
-            alt="descripción de la imagen"
-            className="popup__image"
-          />
-          <p className="popup__imagedescription"></p>
-        </div>
-      </div>
+      <ImagePopup></ImagePopup>
     </>
   );
 }
