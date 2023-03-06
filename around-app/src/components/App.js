@@ -27,6 +27,12 @@ function App(props) {
     console.log(e.target);
   }
 
+  function closeAllPopups() {
+    setAvatarProfilePopupOpen(false);
+    setEditProfilePopupOpen(false);
+    setAddPlacePopupOpen(false);
+  }
+
   return (
     <>
       <Header></Header>
@@ -42,6 +48,7 @@ function App(props) {
           name="form-new-profile"
           title="Editar perfil"
           action="Guardar"
+          onClose={closeAllPopups}
         >
           <div class="form__field">
             <input
@@ -78,6 +85,7 @@ function App(props) {
           name="form-change-profile-avatar"
           title="Cambiar foto de perfil"
           action=" Guardar"
+          onClose={closeAllPopups}
         >
           <div class="form__field">
             <input
@@ -95,7 +103,12 @@ function App(props) {
       </Popup>
 
       <Popup isOpen={isAddPlacePopupOpen}>
-        <PopupWithForm name="form-new-place" title="Nuevo lugar" action="Crear">
+        <PopupWithForm
+          name="form-new-place"
+          title="Nuevo lugar"
+          action="Crear"
+          onClose={closeAllPopups}
+        >
           <div class="form__field">
             <input
               type="text"

@@ -2,6 +2,8 @@ import React from "react";
 import Popup from "../popup/Popup";
 
 function PopupWithForm(props) {
+  const { onClose } = props;
+  console.log(props);
   return (
     <>
       <div className="popup__container popup__container_function-form">
@@ -17,7 +19,11 @@ function PopupWithForm(props) {
             </button>
           </fieldset>
         </form>
-        <button className="close-button pointer" type="button"></button>
+        <button
+          className="close-button pointer"
+          type="button"
+          onClick={onClose}
+        ></button>
       </div>
     </>
   );
