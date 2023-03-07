@@ -22,7 +22,7 @@ function Main(props) {
       setUserName(info.name);
       setUserDescription(info.about);
       setUserAvatar(info.avatar);
-      console.log(info.avatar);
+      console.log(info);
     });
   });
 

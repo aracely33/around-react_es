@@ -5,10 +5,10 @@ class API {
 
   getUserInfo() {
     return fetch(
-      "https://around.nomoreparties.co/v1/web_es_cohort_02/users/me",
+      "https://around.nomoreparties.co/v1/web_es_cohort_04/users/me",
       {
         headers: {
-          authorization: "38be44b0-e909-4575-ba93-d677e497f17a",
+          authorization: "a6a0db06-97e2-459a-a0a1-f3c5559ea4e0",
         },
       }
     ).then((res) => {
@@ -18,7 +18,7 @@ class API {
       return Promise.reject(`Error: ${res.status}`);
     });
   }
-
+  /*
   getInitialCards() {
     return fetch("https://around.nomoreparties.co/v1/web_es_cohort_02/cards", {
       headers: {
@@ -145,7 +145,7 @@ class API {
       }
       return Promise.reject(`Error: ${res.status}`);
     });
-  }
+  }*/
 }
 
 /*
