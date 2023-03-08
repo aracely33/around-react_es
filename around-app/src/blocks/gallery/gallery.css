@@ -8,7 +8,7 @@
   width: 68.9069%;
   gap: 21px 18px;
   border-radius: 10px;
-  margin: 0 0 68px 0;
+  margin: 0 auto 68px auto;
 }
 
 @media screen and (max-width: 321px) {

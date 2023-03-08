@@ -1,5 +1,6 @@
 import React from "react";
 import api from "../../utils/api";
+import Card from "../card/Card";
 
 import "./Main.css";
 
@@ -16,15 +17,46 @@ function Main(props) {
   const [userAvatar, setUserAvatar] = React.useState(
     "https://media.istockphoto.com/id/1434414228/es/foto/gato-triste-severo-aislado-sobre-fondo-blanco.jpg?b=1&s=170667a&w=0&k=20&c=aCW9PET915TnFZgylPXMxsk6Lz_4nYcSDPDqovDItr4="
   );
+  const [cards, setCards] = React.useState([]);
+  ////////
+  React.useEffect(() => {
+    api
+      .getUserInfo()
+      .then((info) => {
+        setUserName(info.name);
+        setUserDescription(info.about);
+        setUserAvatar(info.avatar);
+        //console.log(info);
+      })
+      .catch((err) => console.error(err));
+  });
 
   React.useEffect(() => {
-    api.getUserInfo().then((info) => {
-      setUserName(info.name);
-      setUserDescription(info.about);
-      setUserAvatar(info.avatar);
-      console.log(info);
+    api
+      .getInitialCards()
+      .then((cards) => {
+        //console.log(cards);
+        setCards(cards);
+      })
+      .catch((err) => console.error(err));
+  }, []);
+
+  const renderCards = () =>
+    cards.map((card) => {
+      const { _id, owner, link, name, likes } = card;
+      //console.log(card);
+      return (
+        <Card
+          key={_id}
+          cardId={_id}
+          cardOwnerId={owner._id}
+          link={link}
+          cardName={name}
+          cardLikes={likes}
+          onCardClick={onCardClick}
+        />
+      );
     });
-  });
 
   return (
     <>
@@ -60,7 +92,7 @@ function Main(props) {
             ></button>
           </div>
         </div>
-        <div className="gallery"></div>
+        <div className="gallery">{renderCards()}</div>
       </div>
     </>
   );
