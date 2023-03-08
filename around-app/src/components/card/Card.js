@@ -9,11 +9,11 @@ function Card(props) {
     onCardLike,
     onCardDelete,
   } = props;
-  console.log(card);
-  /*
-function handleClick() {
-  props.onCardClick(props.card);
-}*/
+  //console.log(props);
+
+  function handleClick() {
+    props.onCardClick(props);
+  }
 
   return (
     <div className="item">
@@ -26,7 +26,7 @@ function handleClick() {
         className="item__place"
         src={link}
         alt={cardName}
-        onClick={onCardClick}
+        onClick={handleClick}
       />
       <div className="item__place-info">
         <div className="item__place-info-container">

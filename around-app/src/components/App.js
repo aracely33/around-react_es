@@ -141,7 +141,7 @@ function App(props) {
       </Popup>
       <Popup isOpen={imagePic}>
         <ImagePopup
-          imagePopup={selectedCard}
+          cardInfoPopup={selectedCard}
           onClose={closeAllPopups}
         ></ImagePopup>
       </Popup>
@@ -160,4 +160,4 @@ export default App;
       ></PopupWithForm>
  
 
-      <ImagePopup></ImagePopup>*/
+*/

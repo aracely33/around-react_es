@@ -26,7 +26,6 @@ function Main(props) {
         setUserName(info.name);
         setUserDescription(info.about);
         setUserAvatar(info.avatar);
-        //console.log(info);
       })
       .catch((err) => console.error(err));
   });
@@ -35,7 +34,6 @@ function Main(props) {
     api
       .getInitialCards()
       .then((cards) => {
-        //console.log(cards);
         setCards(cards);
       })
       .catch((err) => console.error(err));
