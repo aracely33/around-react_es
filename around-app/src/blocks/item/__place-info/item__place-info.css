@@ -1,11 +1,9 @@
 .item__place-info {
-  width: 100%;
   background: #ffffff;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
   justify-content: center;
+  align-items: center;
+  min-height: 79px;
+  min-width: 282px;
   border-radius: 0 0 10px 10px;
 }

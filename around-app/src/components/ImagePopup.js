@@ -2,8 +2,6 @@ import React from "react";
 
 function ImagePopup(props) {
   const { cardInfoPopup, onClose } = props;
-  //console.log(`${cardInfoPopup.link}`);
-  //console.log(cardInfoPopup);
 
   return (
     <div className="popup__container popup__container_function-image">

@@ -1,11 +1,11 @@
 import React from "react";
-import Main from "./around_main/Main";
-import Header from "./around_header/Header";
-import Footer from "./footer/Footer";
-import Popup from "./popup/Popup";
-import PopupWithForm from "./popupWithForm/PopupWithForm";
-import ImagePopup from "./imagePopup/ImagePopup";
-import Card from "./card/Card";
+import Main from "./Main";
+import Header from "./Header";
+import Footer from "./Footer";
+import Popup from "./Popup";
+import PopupWithForm from "./PopupWithForm";
+import ImagePopup from "./ImagePopup";
+import Card from "./Card";
 
 function App(props) {
   const [isAvatarProfilePopupOpen, setAvatarProfilePopupOpen] =

@@ -1,8 +1,6 @@
 import React from "react";
-import api from "../../utils/api";
-import Card from "../card/Card";
-
-import "./Main.css";
+import api from "../utils/api";
+import Card from "./Card";
 
 function Main(props) {
   const {
@@ -77,7 +75,7 @@ function Main(props) {
               <p className="profile__info-name">{userName}</p>
               <button
                 type="button"
-                className="profile__info-edi t-button pointer"
+                className="profile__info-edit-button pointer"
                 onClick={onEditProfileClick}
               ></button>
             </div>

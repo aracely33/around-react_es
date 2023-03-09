@@ -1,7 +1,7 @@
 @import url(./vendor/normalize.css);
-/*@import url(../fonts/fonts.css);*/
+@import url(./fonts/fonts.css);
 @import url(./blocks/main/main.css);
-@import url(./blocks/page/page.css);
+@import url(./blocks/root/root.css);
 @import url(./blocks/header/header.css);
 @import url(./blocks/header/__logo/header__logo.css);
 
@@ -27,7 +27,10 @@
 @import url(./blocks/item/item.css);
 @import url(./blocks/item/__trash-button/item__trash-button.css);
 @import url(./blocks/item/__place/item__place.css);
+@import url(./blocks/item/__place-info-container/item__place-info-container.css);
 @import url(./blocks/item/__place-info/item__place-info.css);
+@import url(./blocks/item/__place-info-name/item__place-info-name.css);
+@import url(./blocks/item/__likes-container/item__likes-container.css);
 @import url(./blocks/item/__likes-number/item__likes-number.css);
 @import url(./blocks/item/__place-like-button/item__place-like-button.css);
 @import url(./blocks/item/__place-like-button/_active/item__place-like-button_active.css);

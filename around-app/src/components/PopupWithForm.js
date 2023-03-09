@@ -1,5 +1,5 @@
 import React from "react";
-import Popup from "../popup/Popup";
+import Popup from "./Popup";
 
 function PopupWithForm(props) {
   const { onClose } = props;
