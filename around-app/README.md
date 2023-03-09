@@ -1,109 +1,15 @@
 # Around US with React 👩‍💻
 
-Este proyecto se basa en la refactorización del proyecto \* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - El framework web usado
+Este proyecto se basa en la refactorización del proyecto alrededor de los Estados Unidos utilizando React (https://github.com/aracely33/web_project_4_esp)
 
 ## Comenzando 🚀
+copia es repositorio de (https://github.com/aracely33/around-react_es)
 
-_Estas instrucciones te permitirán obtener una copia del proyecto en funcionamiento en tu máquina local para propósitos de desarrollo y pruebas._
 
 Mira **Deployment** para conocer como desplegar el proyecto.
 
-### Pre-requisitos 📋
 
-_Que cosas necesitas para instalar el software y como instalarlas_
-
-```
-Da un ejemplo
-```
-
-### Instalación 🔧
-
-_Una serie de ejemplos paso a paso que te dice lo que debes ejecutar para tener un entorno de desarrollo ejecutandose_
-
-_Dí cómo será ese paso_
-
-```
-Da un ejemplo
-```
-
-_Y repite_
-
-```
-hasta finalizar
-```
-
-_Finaliza con un ejemplo de cómo obtener datos del sistema o como usarlos para una pequeña demo_
-
-## Ejecutando las pruebas ⚙️
-
-_Explica como ejecutar las pruebas automatizadas para este sistema_
-
-### Analice las pruebas end-to-end 🔩
-
-_Explica que verifican estas pruebas y por qué_
-
-```
-Da un ejemplo
-```
-
-### Y las pruebas de estilo de codificación ⌨️
-
-_Explica que verifican estas pruebas y por qué_
-
-```
-Da un ejemplo
-```
-
-## Despliegue 📦
-
-_Agrega notas adicionales sobre como hacer deploy_
-
-## Construido con 🛠️
-
-_Menciona las herramientas que utilizaste para crear tu proyecto_
-
-- [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - El framework web usado
-- [Maven](https://maven.apache.org/) - Manejador de dependencias
-- [ROME](https://rometools.github.io/rome/) - Usado para generar RSS
-
-## Contribuyendo 🖇️
-
-Por favor lee el [CONTRIBUTING.md](https://gist.github.com/villanuevand/xxxxxx) para detalles de nuestro código de conducta, y el proceso para enviarnos pull requests.
-
-## Wiki 📖
-
-Puedes encontrar mucho más de cómo utilizar este proyecto en nuestra [Wiki](https://github.com/tu/proyecto/wiki)
-
-## Versionado 📌
-
-Usamos [SemVer](http://semver.org/) para el versionado. Para todas las versiones disponibles, mira los [tags en este repositorio](https://github.com/tu/proyecto/tags).
-
-## Autores ✒️
-
-_Menciona a todos aquellos que ayudaron a levantar el proyecto desde sus inicios_
-
-- **Andrés Villanueva** - _Trabajo Inicial_ - [villanuevand](https://github.com/villanuevand)
-- **Fulanito Detal** - _Documentación_ - [fulanitodetal](#fulanito-de-tal)
-
-También puedes mirar la lista de todos los [contribuyentes](https://github.com/your/project/contributors) quíenes han participado en este proyecto.
-
-## Licencia 📄
-
-Este proyecto está bajo la Licencia (Tu Licencia) - mira el archivo [LICENSE.md](LICENSE.md) para detalles
-
-## Expresiones de Gratitud 🎁
-
-- Comenta a otros sobre este proyecto 📢
-- Invita una cerveza 🍺 o un café ☕ a alguien del equipo.
-- Da las gracias públicamente 🤓.
-- Dona con cripto a esta dirección: `0xf253fc233333078436d111175e5a76a649890000`
-- etc.
-
----
-
-⌨️ con ❤️ por [Villanuevand](https://github.com/Villanuevand) 😊
-
-# Getting Started with Create React App
+### Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -173,3 +79,57 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+
+### Pre-requisitos 📋
+
+#### Node.js
+
+Node.js is an open-source, cross-platform JavaScript runtime environment.
+
+For information on using Node.js, see the [Node.js website][].
+
+The Node.js project uses an [open governance model](./GOVERNANCE.md). The
+[OpenJS Foundation][] provides support for the project.
+
+Contributors are expected to act in a collaborative manner to move
+the project forward. We encourage the constructive exchange of contrary
+opinions and compromise. The [TSC](./GOVERNANCE.md#technical-steering-committee)
+reserves the right to limit or block contributors who repeatedly act in ways
+that discourage, exhaust, or otherwise negatively affect other participants.
+
+
+## Despliegue GitHub Pages 📦
+Instala el paquete gh-pages como una dependencia de desarrollo:
+ npm install gh-pages --save-dev
+  
+Agrega un nuevo campo homepage a package.json y configúralo así:
+ "homepage": "https://{username}.github.io/{repo-name}",
+  
+Aquí debes reemplazar {username} con tu nombre de usuario de GitHub, y {repo-name} con el nombre del repositorio (para este proyecto, debe ser around-react_es).
+Agrega los scripts predeploy y deploy:
+ "scripts": {
+   ...
+   "predeploy": "npm run build",
+   "deploy": "gh-pages -d build"
+  }
+  
+Observa que ahora estamos usando el directorio build para el despliegue. Esta carpeta se crea automáticamente y se puebla con los archivos estáticos necesarios al ejecutarse el comando npm run build.
+Ejecuta el comando npm run deploy. El contenido de la carpeta build se moverá a remote branch de gh-pages.
+Ve a los ajustes de tu repositorio en GitHub, desplázate hacia abajo hasta la sección "Pages" y cambia la fuente (source) de branch a gh-pages.
+Ahora tu proyecto está disponible en la URL que especificaste en el campo homepage de package.json.
+
+## Construido con 🛠️
+
+_Menciona las herramientas que utilizaste para crear tu proyecto_
+
+- [React](https://reactjs.org/) - El framework web usado
+- [NodeJs](https://nodejs.org/es/) - Manejador de dependencias
+
+
+
+
+
+
+
