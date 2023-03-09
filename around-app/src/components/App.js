@@ -15,6 +15,7 @@ function App(props) {
   const [isAddPlacePopupOpen, setAddPlacePopupOpen] = React.useState(false);
   const [imagePic, setImagePic] = React.useState(false);
   const [selectedCard, setSelectedCard] = React.useState("");
+  const [eraseCardAsk, setEraseCardAsk] = React.useState(false);
 
   function handleEditProfileClick() {
     setEditProfilePopupOpen(true);
@@ -32,12 +33,21 @@ function App(props) {
     setImagePic(true);
   }
 
+  function handleEraseAsk() {
+    setEraseCardAsk(true);
+  }
+
   function closeAllPopups() {
     setAvatarProfilePopupOpen(false);
     setEditProfilePopupOpen(false);
     setAddPlacePopupOpen(false);
     setSelectedCard("");
     setImagePic(false);
+    setEraseCardAsk(false);
+  }
+
+  function handleCardDelete(card) {
+    console.log(card);
   }
 
   return (
@@ -48,6 +58,7 @@ function App(props) {
         onEditAvatarClick={handleEditAvatarClick}
         onAddPlaceClick={handleAddPlaceClick}
         onCardClick={handleCardClick}
+        onDeleteCardAsk={handleEraseAsk}
       ></Main>
       <Footer></Footer>
       <Popup isOpen={isEditProfilePopupOpen}>
@@ -145,6 +156,15 @@ function App(props) {
           onClose={closeAllPopups}
         ></ImagePopup>
       </Popup>
+
+      <Popup isOpen={eraseCardAsk}>
+        <PopupWithForm
+          name="form-delete-card-ask"
+          title=" ¿Estás seguro?"
+          action="Sí"
+          onClose={closeAllPopups}
+        ></PopupWithForm>
+      </Popup>
     </>
   );
 }
@@ -153,11 +173,7 @@ export default App;
 
 /*      
 
-      <PopupWithForm
-        name="form-delete-card-ask"
-        title=" ¿Estás seguro?"
-        action="Sí"
-      ></PopupWithForm>
+
  
 
 */

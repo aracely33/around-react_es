@@ -8,8 +8,8 @@ function Card(props) {
     onCardClick,
     onCardLike,
     onCardDelete,
+    onDeleteCardAsk,
   } = props;
-  //console.log(props);
 
   function handleClick() {
     props.onCardClick(props);
@@ -20,7 +20,7 @@ function Card(props) {
       <button
         type="button"
         className="item__trash-button"
-        onClick={onCardDelete}
+        onClick={onDeleteCardAsk}
       ></button>
       <img
         className="item__place"
