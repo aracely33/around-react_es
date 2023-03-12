@@ -1,4 +1,6 @@
 import React from "react";
+import { UserContext } from "../contexts/UserContext";
+
 function Card(props) {
   const {
     cardOwnerId,
@@ -7,12 +9,28 @@ function Card(props) {
     cardLikes,
     onCardClick,
     onCardLike,
-    onCardDelete,
+    onEraseCard,
     onDeleteCardAsk,
   } = props;
 
+  const currentUser = React.useContext(UserContext);
+  console.log(currentUser);
+  const isOwn = cardOwnerId === currentUser._id;
+  /* const cardButtonDeleteStyle = isOwn
+    ? { display: "block" }
+    : { display: "none" };
+  const isLiked = cardLikes.some((i) => i._id === currentUser._id);
+  const cardLikeButtonClassName = isLiked
+    ? "cards__like-btn cards__like-btn_active"
+    : "cards__like-btn";
+*/
+
   function handleClick() {
     props.onCardClick(props);
+  }
+
+  function handleAskDelete() {
+    props.onDeleteCardAsk(props);
   }
 
   return (
@@ -20,7 +38,7 @@ function Card(props) {
       <button
         type="button"
         className="item__trash-button"
-        onClick={onDeleteCardAsk}
+        onClick={handleAskDelete}
       ></button>
       <img
         className="item__place"

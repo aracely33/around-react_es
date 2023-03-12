@@ -9,6 +9,7 @@ function Main(props) {
     onAddPlaceClick,
     onCardClick,
     onDeleteCardAsk,
+    onEraseCard,
   } = props;
 
   const [userName, setUserName] = React.useState("");
@@ -52,6 +53,7 @@ function Main(props) {
           cardLikes={likes}
           onCardClick={onCardClick}
           onDeleteCardAsk={onDeleteCardAsk}
+          onEraseCard={onEraseCard}
         />
       );
     });

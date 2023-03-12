@@ -1,35 +1,23 @@
 import React, { useContext } from "react";
 import PopupWithForm from "./PopupWithForm";
 import { UserContext } from "../contexts/UserContext";
+import Card from "./Card";
 
-export default function EditAvatarPopup(props) {
-  const { isOpen, onClose, onUpdateAvatar } = props;
-  const currentUser = React.useContext(CurrentUserContext);
-  const avatarRef = React.useRef(currentUser.avatar);
+export default function DeleteCardForm(props) {
+  const { isOpen, onClose, onEraseCard } = props;
 
-  function handleSubmit(e) {
+  console.log(props);
+  /*function handleSubmit(e) {
     e.preventDefault();
-
-    onUpdateAvatar({
-      avatar: avatarRef.current.value,
-    });
-  }
-
+    onEraseCard
+  }*/
   return (
     <PopupWithForm
-      title="Cambiar foto de perfil"
-      submitText="Guardar"
-      onSubmit={handleSubmit}
-      inputs={[
-        {
-          type: "url",
-          placeholder: "Enlace a la imagen",
-          name: "avatar",
-          id: "profile-pic",
-          ref: avatarRef,
-          value: undefined,
-        },
-      ]}
+      title="¿Estás seguro?"
+      action="Sí"
+      onSubmit={onEraseCard}
+      inputs={[]}
+      onClose={onClose}
     />
   );
 }

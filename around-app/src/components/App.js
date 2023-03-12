@@ -1,21 +1,27 @@
 import React from "react";
+import { UserContext } from "../contexts/UserContext";
 import Main from "./Main";
 import Header from "./Header";
 import Footer from "./Footer";
 import Popup from "./Popup";
 import PopupWithForm from "./PopupWithForm";
+import DeleteCardForm from "./DeleteCardForm";
+import api from "../utils/api";
 import ImagePopup from "./ImagePopup";
 import Card from "./Card";
 
 function App(props) {
-  const [isAvatarProfilePopupOpen, setAvatarProfilePopupOpen] =
-    React.useState(false);
-  const [isEditProfilePopupOpen, setEditProfilePopupOpen] =
-    React.useState(false);
+  const [isAvatarProfilePopupOpen, setAvatarProfilePopupOpen] = React.useState(
+    false
+  );
+  const [isEditProfilePopupOpen, setEditProfilePopupOpen] = React.useState(
+    false
+  );
   const [isAddPlacePopupOpen, setAddPlacePopupOpen] = React.useState(false);
   const [imagePic, setImagePic] = React.useState(false);
   const [selectedCard, setSelectedCard] = React.useState("");
   const [eraseCardAsk, setEraseCardAsk] = React.useState(false);
+  const [currentUser, setCurrentUser] = React.useState({});
 
   function handleEditProfileClick() {
     setEditProfilePopupOpen(true);
@@ -33,8 +39,9 @@ function App(props) {
     setImagePic(true);
   }
 
-  function handleEraseAsk() {
+  function handleEraseAsk(card) {
     setEraseCardAsk(true);
+    setCurrentUser(card);
   }
 
   function closeAllPopups() {
@@ -47,26 +54,49 @@ function App(props) {
   }
 
   function handleCardDelete(card) {
-    console.log(card);
+    /*api
+      .handleCardDelete(card._id)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => console.error(err));*/
   }
 
   return (
     <>
-      <Header></Header>
-      <Main
-        onEditProfileClick={handleEditProfileClick}
-        onEditAvatarClick={handleEditAvatarClick}
-        onAddPlaceClick={handleAddPlaceClick}
-        onCardClick={handleCardClick}
-        onDeleteCardAsk={handleEraseAsk}
-      ></Main>
-      <Footer></Footer>
+      <UserContext.Provider value={currentUser}>
+        <Header></Header>
+        <Main
+          onEditProfileClick={handleEditProfileClick}
+          onEditAvatarClick={handleEditAvatarClick}
+          onAddPlaceClick={handleAddPlaceClick}
+          onCardClick={handleCardClick}
+          onDeleteCardAsk={handleEraseAsk}
+          onEraseCard={handleCardDelete}
+        ></Main>
+        <Footer></Footer>
+
+        <Popup isOpen={eraseCardAsk}>
+          <DeleteCardForm
+            onEraseCard={handleCardDelete}
+            onClose={closeAllPopups}
+          ></DeleteCardForm>
+        </Popup>
+      </UserContext.Provider>
+    </>
+  );
+}
+
+export default App;
+
+/*      
       <Popup isOpen={isEditProfilePopupOpen}>
         <PopupWithForm
           name="form-new-profile"
           title="Editar perfil"
           action="Guardar"
           onClose={closeAllPopups}
+          in
         >
           <div className="form__field">
             <input
@@ -156,23 +186,6 @@ function App(props) {
           onClose={closeAllPopups}
         ></ImagePopup>
       </Popup>
-
-      <Popup isOpen={eraseCardAsk}>
-        <PopupWithForm
-          name="form-delete-card-ask"
-          title=" ¿Estás seguro?"
-          action="Sí"
-          onClose={closeAllPopups}
-        ></PopupWithForm>
-      </Popup>
-    </>
-  );
-}
-
-export default App;
-
-/*      
-
 
  
 
