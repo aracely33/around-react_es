@@ -9,6 +9,7 @@ import DeleteCardForm from "./DeleteCardForm";
 import api from "../utils/api";
 import ImagePopup from "./ImagePopup";
 import Card from "./Card";
+import UpdateProfileForm from "./UpdateProfileForm";
 
 function App(props) {
   const [isAvatarProfilePopupOpen, setAvatarProfilePopupOpen] = React.useState(
@@ -23,7 +24,7 @@ function App(props) {
   const [eraseCardAsk, setEraseCardAsk] = React.useState(false);
   const [currentUser, setCurrentUser] = React.useState({});
 
-  function handleEditProfileClick() {
+  function handleEditProfileClick(profile) {
     setEditProfilePopupOpen(true);
   }
   function handleEditAvatarClick() {
@@ -37,6 +38,28 @@ function App(props) {
   function handleCardClick(card) {
     setSelectedCard(card);
     setImagePic(true);
+  }
+
+  function handleUpdateUser(data) {
+    api
+      .handleEditProfile(data)
+      .then((data) => {
+        console.log(data);
+        setCurrentUser(data);
+      })
+      .catch((err) => console.error(err));
+    closeAllPopups();
+  }
+
+  function handleUserNameChange(e) {
+    console.log("aqui iría setUserName(e.target.value)");
+    //setUserName(e.target.value);
+  }
+
+  function handleUserDescriptionChange(e) {
+    console.log("aqui iría setUserDescription(e.target.value)");
+
+    //setUserDescription(e.target.value);
   }
 
   function handleEraseAsk(card) {
@@ -81,6 +104,15 @@ function App(props) {
             onEraseCard={handleCardDelete}
             onClose={closeAllPopups}
           ></DeleteCardForm>
+        </Popup>
+
+        <Popup isOpen={isEditProfilePopupOpen}>
+          <UpdateProfileForm
+            onClose={closeAllPopups}
+            onUpdateUser={handleUpdateUser}
+            onUserNameChange={handleUserNameChange}
+            onUserDescriptionChange={handleUserDescriptionChange}
+          ></UpdateProfileForm>
         </Popup>
       </UserContext.Provider>
     </>

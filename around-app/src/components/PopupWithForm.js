@@ -38,7 +38,7 @@ function PopupWithForm(props) {
                         value={value || value === "" ? value : undefined}
                         required
                       />
-                      <span class="popup__error nombre-error"></span>
+                      <span className="popup__error nombre-error"></span>
                     </React.Fragment>
                   );
                 }

@@ -14,7 +14,7 @@ function Card(props) {
   } = props;
 
   const currentUser = React.useContext(UserContext);
-  console.log(currentUser);
+  //console.log(currentUser);
   const isOwn = cardOwnerId === currentUser._id;
   /* const cardButtonDeleteStyle = isOwn
     ? { display: "block" }

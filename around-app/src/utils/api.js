@@ -48,9 +48,7 @@ class API {
       return Promise.reject(`Error: ${res.status}`);
     });
   }
-}
 
-/*
   handleEditProfile(value) {
     return fetch(
       "https://around.nomoreparties.co/v1/web_es_cohort_02/users/me",
@@ -72,6 +70,10 @@ class API {
       return Promise.reject(`Error: ${res.status}`);
     });
   }
+}
+
+/*
+  
 
 
 
