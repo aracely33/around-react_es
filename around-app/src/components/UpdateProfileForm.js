@@ -14,7 +14,6 @@ export default function UpdateProfileForm(props) {
     about,
   } = props;
 
-  //console.log(props);
   function handleSubmit(e) {
     e.preventDefault();
     onUpdateUser({
@@ -35,7 +34,7 @@ export default function UpdateProfileForm(props) {
     <PopupWithForm
       title="Editar Perfil"
       action="Guardar"
-      onClose={onClose}
+      onClose={props.onClose}
       onSubmit={handleSubmit}
       inputs={[
         {

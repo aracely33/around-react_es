@@ -4,13 +4,8 @@ import { UserContext } from "../contexts/UserContext";
 import Card from "./Card";
 
 export default function DeleteCardForm(props) {
-  const { isOpen, onClose, onEraseCard } = props;
+  const { onClose, onEraseCard } = props;
 
-  //console.log(props);
-  /*function handleSubmit(e) {
-    e.preventDefault();
-    onEraseCard
-  }*/
   return (
     <PopupWithForm
       title="¿Estás seguro?"

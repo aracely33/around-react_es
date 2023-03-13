@@ -10,6 +10,7 @@ import api from "../utils/api";
 import ImagePopup from "./ImagePopup";
 import Card from "./Card";
 import UpdateProfileForm from "./UpdateProfileForm";
+import ChangeAvatarForm from "./ChangeAvatarForm";
 
 function App(props) {
   const [isAvatarProfilePopupOpen, setAvatarProfilePopupOpen] = React.useState(
@@ -24,7 +25,54 @@ function App(props) {
   const [eraseCardAsk, setEraseCardAsk] = React.useState(false);
   const [currentUser, setCurrentUser] = React.useState({});
 
-  function handleEditProfileClick(profile) {
+  const [userName, setUserName] = React.useState("");
+  const [userDescription, setUserDescription] = React.useState("");
+  const [userAvatar, setUserAvatar] = React.useState(
+    "https://media.istockphoto.com/id/1434414228/es/foto/gato-triste-severo-aislado-sobre-fondo-blanco.jpg?b=1&s=170667a&w=0&k=20&c=aCW9PET915TnFZgylPXMxsk6Lz_4nYcSDPDqovDItr4="
+  );
+  const [cards, setCards] = React.useState([]);
+  ////////
+  React.useEffect(() => {
+    api
+      .getUserInfo()
+      .then((info) => {
+        setCurrentUser(info);
+        //setUserName(info.name);
+        //setUserDescription(info.about);
+        //setUserAvatar(info.avatar);
+      }, [])
+      .catch((err) => console.error(err));
+  });
+
+  React.useEffect(() => {
+    api
+      .getInitialCards()
+      .then((cards) => {
+        setCards(cards);
+      })
+      .catch((err) => console.error(err));
+  }, []);
+
+  const renderCards = () =>
+    cards.map((card) => {
+      const { _id, owner, link, name, likes } = card;
+      //console.log(card);
+      return (
+        <Card
+          key={_id}
+          cardId={_id}
+          cardOwnerId={owner._id}
+          link={link}
+          cardName={name}
+          cardLikes={likes}
+          onCardClick={handleCardClick}
+          onDeleteCardAsk={handleEraseAsk}
+          //onEraseCard={onEraseCard}
+        />
+      );
+    });
+
+  function handleEditProfileClick() {
     setEditProfilePopupOpen(true);
   }
   function handleEditAvatarClick() {
@@ -40,31 +88,16 @@ function App(props) {
     setImagePic(true);
   }
 
-  function handleUpdateUser(data) {
-    api
-      .handleEditProfile(data)
-      .then((data) => {
-        console.log(data);
-        setCurrentUser(data);
-      })
-      .catch((err) => console.error(err));
-    closeAllPopups();
-  }
-
-  function handleUserNameChange(e) {
-    console.log("aqui iría setUserName(e.target.value)");
-    //setUserName(e.target.value);
-  }
-
-  function handleUserDescriptionChange(e) {
-    console.log("aqui iría setUserDescription(e.target.value)");
-
-    //setUserDescription(e.target.value);
-  }
-
   function handleEraseAsk(card) {
     setEraseCardAsk(true);
     setCurrentUser(card);
+  }
+  function handleChangeAvatar(data) {
+    api
+      .handleChangeAvatar(data)
+      .then((data) => setCurrentUser(data))
+      .catch((err) => console.error(err));
+    closeAllPopups();
   }
 
   function closeAllPopups() {
@@ -93,9 +126,7 @@ function App(props) {
           onEditProfileClick={handleEditProfileClick}
           onEditAvatarClick={handleEditAvatarClick}
           onAddPlaceClick={handleAddPlaceClick}
-          onCardClick={handleCardClick}
-          onDeleteCardAsk={handleEraseAsk}
-          onEraseCard={handleCardDelete}
+          renderCards={renderCards}
         ></Main>
         <Footer></Footer>
 
@@ -107,12 +138,14 @@ function App(props) {
         </Popup>
 
         <Popup isOpen={isEditProfilePopupOpen}>
-          <UpdateProfileForm
+          <UpdateProfileForm onClose={closeAllPopups}></UpdateProfileForm>
+        </Popup>
+
+        <Popup isOpen={isAvatarProfilePopupOpen}>
+          <ChangeAvatarForm
             onClose={closeAllPopups}
-            onUpdateUser={handleUpdateUser}
-            onUserNameChange={handleUserNameChange}
-            onUserDescriptionChange={handleUserDescriptionChange}
-          ></UpdateProfileForm>
+            onUpdateAvatar={handleChangeAvatar}
+          ></ChangeAvatarForm>
         </Popup>
       </UserContext.Provider>
     </>
@@ -122,42 +155,8 @@ function App(props) {
 export default App;
 
 /*      
-      <Popup isOpen={isEditProfilePopupOpen}>
-        <PopupWithForm
-          name="form-new-profile"
-          title="Editar perfil"
-          action="Guardar"
-          onClose={closeAllPopups}
-          in
-        >
-          <div className="form__field">
-            <input
-              type="text"
-              className="form__input form__input_info-name popup__input"
-              placeholder="Nombre"
-              name="nombre"
-              id="nombre"
-              required
-              minLength="2"
-              maxLength="40"
-            />
-            <span className="popup__error nombre-error"></span>
-          </div>
-          <div className="form__field">
-            <input
-              type="text"
-              className="form__input form__input_info-occupation popup__input"
-              placeholder="Acerca de mi"
-              name="ocupación"
-              id="ocupación"
-              required
-              minLength="2"
-              maxLength="200"
-            />
-            <span className="popup__error ocupación-error"></span>
-          </div>
-        </PopupWithForm>
-      </Popup>
+
+
       <Popup isOpen={isAvatarProfilePopupOpen}>
         <PopupWithForm
           name="form-change-profile-avatar"

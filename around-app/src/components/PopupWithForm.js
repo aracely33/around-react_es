@@ -3,7 +3,7 @@ import Popup from "./Popup";
 
 function PopupWithForm(props) {
   const { onClose, action, inputs, onSubmit } = props;
-  //console.log(onSubmit);
+
   return (
     <>
       <div className="popup__container popup__container_function-form">
@@ -56,7 +56,7 @@ function PopupWithForm(props) {
         <button
           className="close-button pointer"
           type="button"
-          onClick={onClose}
+          onClick={props.onClose}
         ></button>
       </div>
     </>
