@@ -11,6 +11,7 @@ import ImagePopup from "./ImagePopup";
 import Card from "./Card";
 import UpdateProfileForm from "./UpdateProfileForm";
 import ChangeAvatarForm from "./ChangeAvatarForm";
+import AddPlaceForm from "./AddPlaceForm";
 
 function App(props) {
   const [isAvatarProfilePopupOpen, setAvatarProfilePopupOpen] = React.useState(
@@ -19,14 +20,19 @@ function App(props) {
   const [isEditProfilePopupOpen, setEditProfilePopupOpen] = React.useState(
     false
   );
+
+  /////
   const [isAddPlacePopupOpen, setAddPlacePopupOpen] = React.useState(false);
+  const [newPlace, setNewPlace] = React.useState("");
+  const [newPlaceCaption, setNewPlaceCaption] = React.useState("");
+  const [userName, setUserName] = React.useState("");
+  const [userDescription, setUserDescription] = React.useState("");
+  ///////////
   const [imagePic, setImagePic] = React.useState(false);
   const [selectedCard, setSelectedCard] = React.useState("");
   const [eraseCardAsk, setEraseCardAsk] = React.useState(false);
   const [currentUser, setCurrentUser] = React.useState({});
 
-  const [userName, setUserName] = React.useState("");
-  const [userDescription, setUserDescription] = React.useState("");
   const [userAvatar, setUserAvatar] = React.useState(
     "https://media.istockphoto.com/id/1434414228/es/foto/gato-triste-severo-aislado-sobre-fondo-blanco.jpg?b=1&s=170667a&w=0&k=20&c=aCW9PET915TnFZgylPXMxsk6Lz_4nYcSDPDqovDItr4="
   );
@@ -100,6 +106,24 @@ function App(props) {
     closeAllPopups();
   }
 
+  /////////
+  function handleAddPlaceSubmit(data) {
+    api
+      .setNewPlace(data)
+      .then((newCard) => setCards([newCard, ...cards]))
+      .catch((err) => console.error(err));
+    closeAllPopups();
+  }
+  function handleNewPlaceCaptionChange(e) {
+    setNewPlaceCaption(e.target.value);
+  }
+
+  function handleNewPlaceChange(e) {
+    setNewPlace(e.target.value);
+  }
+
+  //////
+
   function closeAllPopups() {
     setAvatarProfilePopupOpen(false);
     setEditProfilePopupOpen(false);
@@ -147,6 +171,28 @@ function App(props) {
             onUpdateAvatar={handleChangeAvatar}
           ></ChangeAvatarForm>
         </Popup>
+
+        <Popup isOpen={imagePic}>
+          <ImagePopup
+            cardInfoPopup={selectedCard}
+            onClose={closeAllPopups}
+          ></ImagePopup>
+        </Popup>
+
+        <Popup isOpen={isAddPlacePopupOpen}>
+          <AddPlaceForm
+            onClose={closeAllPopups}
+            onAddPlaceSubmit={handleAddPlaceSubmit}
+            onNewPlaceCaptionChange={handleNewPlaceCaptionChange}
+            onNewPlaceChange={handleNewPlaceChange}
+            newPlace={newPlace}
+            newPlaceCaption={newPlaceCaption}
+            setNewPlace={setNewPlace}
+            setNewPlaceCaption={setNewPlaceCaption}
+            name={userName}
+            about={userDescription}
+          ></AddPlaceForm>
+        </Popup>
       </UserContext.Provider>
     </>
   );
@@ -157,26 +203,7 @@ export default App;
 /*      
 
 
-      <Popup isOpen={isAvatarProfilePopupOpen}>
-        <PopupWithForm
-          name="form-change-profile-avatar"
-          title="Cambiar foto de perfil"
-          action=" Guardar"
-          onClose={closeAllPopups}
-        >
-          <div className="form__field">
-            <input
-              id="avatar"
-              className="form__input form__input_new-avatar-url popup__input"
-              placeholder="Enlace a la imagen del avatar"
-              name="avatar"
-              type="url"
-              required
-            />
-            <span className="popup__error avatar-error"></span>
-          </div>
-        </PopupWithForm>
-      </Popup>
+
 
       <Popup isOpen={isAddPlacePopupOpen}>
         <PopupWithForm
