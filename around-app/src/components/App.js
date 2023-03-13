@@ -43,9 +43,9 @@ function App(props) {
       .getUserInfo()
       .then((info) => {
         setCurrentUser(info);
-        //setUserName(info.name);
-        //setUserDescription(info.about);
-        //setUserAvatar(info.avatar);
+        setUserName(info.name);
+        setUserDescription(info.about);
+        setUserAvatar(info.avatar);
       }, [])
       .catch((err) => console.error(err));
   });

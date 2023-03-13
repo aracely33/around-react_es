@@ -7,6 +7,7 @@ export default function ChangeAvatarForm(props) {
 
   const currentUser = React.useContext(UserContext);
   const avatarRef = React.useRef(currentUser.avatar);
+
   function handleSubmit(e) {
     e.preventDefault();
 
