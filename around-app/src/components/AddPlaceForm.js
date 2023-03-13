@@ -6,19 +6,19 @@ export default function AddPlaceForm(props) {
   const {
     onClose,
     onAddPlaceSubmit,
-    onNewPlaceCaptionChange,
-    onNewPlaceChange,
-    newPlace,
-    newPlaceCaption,
-    setNewPlace,
-    setNewPlaceCaption,
+    onNewPlaceTitleChange,
+    onNewPlaceLinkChange,
+    newPlaceLink,
+    newPlaceTitle,
+    setNewPlaceLink,
+    setNewPlaceTitle,
   } = props;
 
   function handleSubmit(e) {
     e.preventDefault();
-    onAddPlaceSubmit({ newPlaceCaption, newPlace });
-    setNewPlace("");
-    setNewPlaceCaption("");
+    onAddPlaceSubmit({ newPlaceTitle, newPlaceLink });
+    setNewPlaceLink("");
+    setNewPlaceTitle("");
   }
   return (
     <PopupWithForm
@@ -34,16 +34,16 @@ export default function AddPlaceForm(props) {
           id: "popup__input_new-place-title",
           minLength: "2",
           maxLength: "30",
-          onChange: onNewPlaceCaptionChange,
-          value: newPlaceCaption,
+          onChange: onNewPlaceTitleChange,
+          value: newPlaceTitle,
         },
         {
           type: "url",
           placeholder: "Enlace a la imagen",
           name: "newPlace",
           id: "popup__input_new-place-pic",
-          onChange: onNewPlaceChange,
-          value: newPlace,
+          onChange: onNewPlaceLinkChange,
+          value: newPlaceLink,
         },
       ]}
     />

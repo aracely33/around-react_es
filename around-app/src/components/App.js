@@ -23,8 +23,8 @@ function App(props) {
 
   /////
   const [isAddPlacePopupOpen, setAddPlacePopupOpen] = React.useState(false);
-  const [newPlace, setNewPlace] = React.useState("");
-  const [newPlaceCaption, setNewPlaceCaption] = React.useState("");
+  const [newPlaceLink, setNewPlaceLink] = React.useState("");
+  const [newPlaceTitle, setNewPlaceTitle] = React.useState("");
   const [userName, setUserName] = React.useState("");
   const [userDescription, setUserDescription] = React.useState("");
   ///////////
@@ -106,23 +106,24 @@ function App(props) {
     closeAllPopups();
   }
 
-  /////////
+  /////////Agregar un nuevo Lugar//////
   function handleAddPlaceSubmit(data) {
+    console.log(data);
     api
-      .setNewPlace(data)
+      .handleAddCard(data)
       .then((newCard) => setCards([newCard, ...cards]))
       .catch((err) => console.error(err));
     closeAllPopups();
   }
   function handleNewPlaceCaptionChange(e) {
-    setNewPlaceCaption(e.target.value);
+    setNewPlaceTitle(e.target.value);
   }
 
   function handleNewPlaceChange(e) {
-    setNewPlace(e.target.value);
+    setNewPlaceLink(e.target.value);
   }
 
-  //////
+  /////////////////////////////////
 
   function closeAllPopups() {
     setAvatarProfilePopupOpen(false);
@@ -183,12 +184,12 @@ function App(props) {
           <AddPlaceForm
             onClose={closeAllPopups}
             onAddPlaceSubmit={handleAddPlaceSubmit}
-            onNewPlaceCaptionChange={handleNewPlaceCaptionChange}
-            onNewPlaceChange={handleNewPlaceChange}
-            newPlace={newPlace}
-            newPlaceCaption={newPlaceCaption}
-            setNewPlace={setNewPlace}
-            setNewPlaceCaption={setNewPlaceCaption}
+            onNewPlaceTitleChange={handleNewPlaceCaptionChange}
+            onNewPlaceLinkChange={handleNewPlaceChange}
+            newPlaceLink={newPlaceLink}
+            newPlaceTitle={newPlaceTitle}
+            setNewPlaceLink={setNewPlaceLink}
+            setNewPlaceTitle={setNewPlaceTitle}
             name={userName}
             about={userDescription}
           ></AddPlaceForm>

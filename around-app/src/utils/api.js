@@ -34,11 +34,11 @@ class API {
 
   handleDeleteCard(cardId) {
     return fetch(
-      `https://around.nomoreparties.co/v1/web_es_cohort_02/cards/${cardId}`,
+      `https://around.nomoreparties.co/v1/web_es_cohort_04/cards/${cardId}`,
       {
         method: "DELETE",
         headers: {
-          authorization: "38be44b0-e909-4575-ba93-d677e497f17a",
+          authorization: "a6a0db06-97e2-459a-a0a1-f3c5559ea4e0",
         },
       }
     ).then((res) => {
@@ -51,11 +51,11 @@ class API {
 
   handleEditProfile(value) {
     return fetch(
-      "https://around.nomoreparties.co/v1/web_es_cohort_02/users/me",
+      "https://around.nomoreparties.co/v1/web_es_cohort_04/users/me",
       {
         method: "PATCH",
         headers: {
-          authorization: "38be44b0-e909-4575-ba93-d677e497f17a",
+          authorization: "a6a0db06-97e2-459a-a0a1-f3c5559ea4e0",
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
@@ -72,15 +72,15 @@ class API {
   }
 
   handleAddCard(value) {
-    return fetch("https://around.nomoreparties.co/v1/web_es_cohort_02/cards ", {
+    return fetch("https://around.nomoreparties.co/v1/web_es_cohort_04/cards", {
       method: "POST",
       headers: {
-        authorization: "38be44b0-e909-4575-ba93-d677e497f17a",
+        authorization: "a6a0db06-97e2-459a-a0a1-f3c5559ea4e0",
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        name: `${value.title}`,
-        link: `${value.image}`,
+        name: `${value.newPlaceTitle}`,
+        link: `${value.newPlaceLink}`,
       }),
     }).then((res) => {
       if (res.ok) {
@@ -92,11 +92,11 @@ class API {
 
   handleLikeClick(cardId) {
     return fetch(
-      `https://around.nomoreparties.co/v1/web_es_cohort_02/cards/likes/${cardId}`,
+      `https://around.nomoreparties.co/v1/web_es_cohort_04/cards/likes/${cardId}`,
       {
         method: "PUT",
         headers: {
-          authorization: "38be44b0-e909-4575-ba93-d677e497f17a",
+          authorization: "a6a0db06-97e2-459a-a0a1-f3c5559ea4e0",
         },
       }
     ).then((res) => {
@@ -109,11 +109,11 @@ class API {
 
   handleUnLikeClick(cardId) {
     return fetch(
-      `https://around.nomoreparties.co/v1/web_es_cohort_02/cards/likes/${cardId}`,
+      `https://around.nomoreparties.co/v1/web_es_cohort_04/cards/likes/${cardId}`,
       {
         method: "DELETE",
         headers: {
-          authorization: "38be44b0-e909-4575-ba93-d677e497f17a",
+          authorization: "a6a0db06-97e2-459a-a0a1-f3c5559ea4e0",
         },
       }
     ).then((res) => {
@@ -126,11 +126,11 @@ class API {
 
   handleChangeAvatar(value) {
     return fetch(
-      "https://around.nomoreparties.co/v1/web_es_cohort_02/users/me/avatar",
+      "https://around.nomoreparties.co/v1/web_es_cohort_04/users/me/avatar",
       {
         method: "PATCH",
         headers: {
-          authorization: "38be44b0-e909-4575-ba93-d677e497f17a",
+          authorization: "a6a0db06-97e2-459a-a0a1-f3c5559ea4e0",
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
