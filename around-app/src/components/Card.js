@@ -14,16 +14,14 @@ function Card(props) {
   } = props;
 
   const currentUser = React.useContext(UserContext);
-  //console.log(currentUser);
   const isOwn = cardOwnerId === currentUser._id;
-  /* const cardButtonDeleteStyle = isOwn
+  const cardButtonTrashStyle = isOwn
     ? { display: "block" }
     : { display: "none" };
   const isLiked = cardLikes.some((i) => i._id === currentUser._id);
-  const cardLikeButtonClassName = isLiked
-    ? "cards__like-btn cards__like-btn_active"
-    : "cards__like-btn";
-*/
+  const cardLikeButtonStyle = isLiked
+    ? "item__place-like-button item__place-like-button_active"
+    : "item__place-like-button";
 
   function handleClick() {
     props.onCardClick(props);
@@ -39,6 +37,7 @@ function Card(props) {
         type="button"
         className="item__trash-button"
         onClick={handleAskDelete}
+        style={cardButtonTrashStyle}
       ></button>
       <img
         className="item__place"
@@ -54,6 +53,7 @@ function Card(props) {
               type="button"
               className="item__place-like-button pointer"
               onClick={onCardLike}
+              //style={cardLikeButtonStyle} //aquí se presenta un error
             ></button>
             <p className="item__likes-number">{cardLikes.length}</p>
           </div>
