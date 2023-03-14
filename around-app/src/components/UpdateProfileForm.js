@@ -27,7 +27,7 @@ export default function UpdateProfileForm(props) {
       about,
     });
   }
-  console.log(name);
+
   return (
     <PopupWithForm
       title="Editar Perfil"

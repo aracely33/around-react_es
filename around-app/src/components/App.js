@@ -55,6 +55,7 @@ function App(props) {
     api
       .getInitialCards()
       .then((cards) => {
+        console.log(cards);
         setCards(cards);
       })
       .catch((err) => console.error(err));
@@ -96,7 +97,7 @@ function App(props) {
 
   function handleEraseAsk(card) {
     setEraseCardAsk(true);
-    setCurrentUser(card);
+    setCurrentUser(card); //quizá aquí esté la falla
   }
   function handleChangeAvatar(data) {
     api
@@ -141,6 +142,17 @@ function App(props) {
   }
 
   /////////////////////////////////
+  function handleDeleteCard(card) {
+    console.log(card);
+    api
+      .handleDeleteCard(card.cardId)
+      .then((deletedCardId) => {
+        console.log(deletedCardId);
+      })
+      .catch((err) => console.error(err));
+
+    closeAllPopups();
+  }
 
   function closeAllPopups() {
     setAvatarProfilePopupOpen(false);
@@ -149,15 +161,6 @@ function App(props) {
     setSelectedCard("");
     setImagePic(false);
     setEraseCardAsk(false);
-  }
-
-  function handleCardDelete(card) {
-    /*api
-      .handleCardDelete(card._id)
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => console.error(err));*/
   }
 
   return (
@@ -174,7 +177,7 @@ function App(props) {
 
         <Popup isOpen={eraseCardAsk}>
           <DeleteCardForm
-            onEraseCard={handleCardDelete}
+            onEraseCard={handleDeleteCard}
             onClose={closeAllPopups}
           ></DeleteCardForm>
         </Popup>

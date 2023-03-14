@@ -1,16 +1,23 @@
 import React, { useContext } from "react";
 import PopupWithForm from "./PopupWithForm";
 import { UserContext } from "../contexts/UserContext";
-import Card from "./Card";
 
 export default function DeleteCardForm(props) {
   const { onClose, onEraseCard } = props;
+
+  const currentUser = React.useContext(UserContext);
+  //console.log(currentUser);
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    onEraseCard(currentUser);
+  }
 
   return (
     <PopupWithForm
       title="¿Estás seguro?"
       action="Sí"
-      onSubmit={onEraseCard}
+      onSubmit={handleSubmit}
       inputs={[]}
       onClose={onClose}
     />
