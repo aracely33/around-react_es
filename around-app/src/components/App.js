@@ -38,6 +38,7 @@ function App(props) {
   );
   const [cards, setCards] = React.useState([]);
   ////////
+
   React.useEffect(() => {
     api
       .getUserInfo()
@@ -46,9 +47,9 @@ function App(props) {
         setUserName(info.name);
         setUserDescription(info.about);
         setUserAvatar(info.avatar);
-      }, [])
+      })
       .catch((err) => console.error(err));
-  });
+  }, []);
 
   React.useEffect(() => {
     api
@@ -73,7 +74,6 @@ function App(props) {
           cardLikes={likes}
           onCardClick={handleCardClick}
           onDeleteCardAsk={handleEraseAsk}
-          //onEraseCard={onEraseCard}
         />
       );
     });
@@ -105,10 +105,27 @@ function App(props) {
       .catch((err) => console.error(err));
     closeAllPopups();
   }
+  /////Modificar el Profile
+  function handleUpdateUser(data) {
+    console.log("me vas a cambiar?");
+    console.log(data);
+    api
+      .handleEditProfile(data)
+      .then((data) => setCurrentUser(data))
+      .catch((err) => console.error(err));
+    closeAllPopups();
+  }
+
+  function handleUserNameChange(e) {
+    setUserName(e.target.value);
+  }
+
+  function handleUserDescriptionChange(e) {
+    setUserDescription(e.target.value);
+  }
 
   /////////Agregar un nuevo Lugar//////
   function handleAddPlaceSubmit(data) {
-    console.log(data);
     api
       .handleAddCard(data)
       .then((newCard) => setCards([newCard, ...cards]))
@@ -163,7 +180,16 @@ function App(props) {
         </Popup>
 
         <Popup isOpen={isEditProfilePopupOpen}>
-          <UpdateProfileForm onClose={closeAllPopups}></UpdateProfileForm>
+          <UpdateProfileForm
+            onClose={closeAllPopups}
+            onUpdateUser={handleUpdateUser}
+            onUserNameChange={handleUserNameChange}
+            onUserDescriptionChange={handleUserDescriptionChange}
+            setUserDescription={setUserDescription}
+            setUserName={setUserName}
+            name={userName}
+            about={userDescription}
+          ></UpdateProfileForm>
         </Popup>
 
         <Popup isOpen={isAvatarProfilePopupOpen}>

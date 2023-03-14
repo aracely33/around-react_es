@@ -13,6 +13,12 @@ export default function UpdateProfileForm(props) {
     name,
     about,
   } = props;
+  const currentUser = React.useContext(UserContext);
+
+  /* React.useEffect(() => {
+    setUserName(currentUser.name);
+    setUserDescription(currentUser.about);
+  }, [currentUser]);*/
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -21,15 +27,7 @@ export default function UpdateProfileForm(props) {
       about,
     });
   }
-
-  const currentUser = React.useContext(UserContext);
-
-  /*
-  React.useEffect(() => {
-    setUserName(currentUser.name);
-    setUserDescription(currentUser.about);
-  }, [currentUser]);*/
-
+  console.log(name);
   return (
     <PopupWithForm
       title="Editar Perfil"
@@ -40,7 +38,7 @@ export default function UpdateProfileForm(props) {
         {
           type: "text",
           placeholder: "Nombre",
-          name: "nombre",
+          name: "name",
           id: "form__input form__input_info-name popup__input",
           minLength: "2",
           maxLength: "40",
@@ -50,7 +48,7 @@ export default function UpdateProfileForm(props) {
         {
           type: "text",
           placeholder: "Acerca de mi",
-          name: "ocupación",
+          name: "about",
           id: "form__input form__input_info-occupation popup__input",
           minLength: "2",
           maxLength: "200",
