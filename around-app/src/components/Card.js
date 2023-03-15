@@ -2,25 +2,15 @@ import React from "react";
 import { UserContext } from "../contexts/UserContext";
 
 function Card(props) {
-  const {
-    cardOwnerId,
-    link,
-    cardName,
-    cardLikes,
-
-    onCardLike,
-  } = props;
+  const { cardOwnerId, link, cardName, onCardLike, cardLikes } = props;
 
   const currentUser = React.useContext(UserContext);
   const isOwn = cardOwnerId === currentUser._id;
   const cardButtonTrashStyle = isOwn
     ? { display: "block" }
     : { display: "none" };
-  //const isLiked = cardLikes.some((i) => i._id === currentUser._id);
-  /*const cardLikeButtonStyle = isLiked
-    ? "item__place-like-button item__place-like-button_active"
-    : "item__place-like-button";
-*/
+  const isLiked = cardLikes.some((i) => i._id === currentUser._id);
+
   function handleClick() {
     props.onCardClick(props);
   }
@@ -49,9 +39,10 @@ function Card(props) {
           <div className="item__likes-container">
             <button
               type="button"
-              className="item__place-like-button pointer"
+              className={`item__place-like-button pointer ${
+                isLiked ? "item__place-like-button_active" : ""
+              }`}
               onClick={onCardLike}
-              //style={cardLikeButtonStyle} //aquí se presenta un error
             ></button>
             <p className="item__likes-number">{cardLikes.length}</p>
           </div>

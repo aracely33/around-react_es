@@ -35,14 +35,3 @@ export default function ChangeAvatarForm(props) {
     />
   );
 }
-
-/*const currentUser = React.useContext(UserContext);
-  const avatarRef = React.useRef(currentUser.avatar);
-  console.log(currentUser);
-  function handleSubmit(e) {
-    e.preventDefault();
-    onUpdateAvatar({
-      avatar: "holi",
-      //avatar: props.userAvatar.current.value,
-    });
-  }*/

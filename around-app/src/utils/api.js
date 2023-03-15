@@ -146,28 +146,4 @@ class API {
   }
 }
 
-/*
-  
-
-
-
-
-
-
-const api = new API({
-  baseUrl: "https://around.nomoreparties.co/v1/web_es_cohort_02",
-  headers: {
-    authorization: "38be44b0-e909-4575-ba93-d677e497f17a",
-    "Content-Type": "application/json",
-  },
-});
-
-
-const api = new API({
-  address: "https://nomoreparties.co",
-  groupId: "https://around.nomoreparties.co/v1/web_es_cohort_02/users/me",
-  token: "38be44b0-e909-4575-ba93-d677e497f17a",
-});
-*/
-
 export default new API();

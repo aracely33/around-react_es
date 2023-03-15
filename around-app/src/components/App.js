@@ -20,7 +20,7 @@ function App(props) {
     false
   );
 
-  /////
+  ////////
   const [isAddPlacePopupOpen, setAddPlacePopupOpen] = React.useState(false);
   const [newPlaceLink, setNewPlaceLink] = React.useState("");
   const [newPlaceTitle, setNewPlaceTitle] = React.useState("");
@@ -33,8 +33,8 @@ function App(props) {
   const [currentUser, setCurrentUser] = React.useState({});
 
   const [userAvatar, setUserAvatar] = React.useState("");
-  // const [newAvatarLink, setNewAvatarLink] = React.useState({});
   const [cards, setCards] = React.useState([]);
+
   ////////
 
   React.useEffect(() => {
@@ -72,9 +72,32 @@ function App(props) {
           cardLikes={likes}
           onCardClick={handleCardClick}
           onDeleteCardAsk={handleEraseAsk}
+          onCardLike={() => handleCardLike(card)}
         />
       );
     });
+
+  function handleCardLike(card) {
+    const isLiked = card.likes.some((i) => i._id === currentUser._id);
+
+    if (isLiked) {
+      api
+        .handleUnLikeClick(card._id)
+        .then((newCard) => {
+          return api.getInitialCards();
+        })
+        .then((data) => setCards(data))
+        .catch((err) => console.error(err));
+    } else {
+      api
+        .handleLikeClick(card._id)
+        .then((newCard) => {
+          return api.getInitialCards();
+        })
+        .then((data) => setCards(data))
+        .catch((err) => console.error(err));
+    }
+  }
 
   function handleEditProfileClick() {
     setEditProfilePopupOpen(true);
@@ -99,7 +122,6 @@ function App(props) {
   /////cambiar avatar
 
   function handleChangeAvatar(data) {
-    console.log(data);
     api
       .handleChangeAvatar(data)
       .then((data) => setCurrentUser(data))
@@ -108,7 +130,6 @@ function App(props) {
   }
 
   function handleNewAvatarLinkChange(e) {
-    console.log(e.target.value);
     setUserAvatar(e.target.value);
   }
 
@@ -156,7 +177,6 @@ function App(props) {
 
   /////////////////////////////////
   function handleDeleteCard(card) {
-    console.log("delete card", card);
     api
       .handleDeleteCard(card.cardId)
       .then((deletedCardId) => {
