@@ -7,10 +7,8 @@ function Card(props) {
     link,
     cardName,
     cardLikes,
-    //onCardClick,
+
     onCardLike,
-    //onEraseCard,
-    //onDeleteCardAsk,
   } = props;
 
   const currentUser = React.useContext(UserContext);
@@ -18,11 +16,11 @@ function Card(props) {
   const cardButtonTrashStyle = isOwn
     ? { display: "block" }
     : { display: "none" };
-  const isLiked = cardLikes.some((i) => i._id === currentUser._id);
-  const cardLikeButtonStyle = isLiked
+  //const isLiked = cardLikes.some((i) => i._id === currentUser._id);
+  /*const cardLikeButtonStyle = isLiked
     ? "item__place-like-button item__place-like-button_active"
     : "item__place-like-button";
-
+*/
   function handleClick() {
     props.onCardClick(props);
   }

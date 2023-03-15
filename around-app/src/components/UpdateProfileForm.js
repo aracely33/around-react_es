@@ -6,8 +6,6 @@ export default function UpdateProfileForm(props) {
     onUpdateUser,
     onUserNameChange,
     onUserDescriptionChange,
-    setUserName,
-    setUserDescription,
     name,
     about,
   } = props;

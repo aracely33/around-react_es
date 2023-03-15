@@ -33,7 +33,7 @@ function App(props) {
   const [currentUser, setCurrentUser] = React.useState({});
 
   const [userAvatar, setUserAvatar] = React.useState("");
-  //const [newAvatarLink, setNewAvatarLink] = React.useState({});
+  // const [newAvatarLink, setNewAvatarLink] = React.useState({});
   const [cards, setCards] = React.useState([]);
   ////////
 
@@ -106,6 +106,12 @@ function App(props) {
       .catch((err) => console.error(err));
     closeAllPopups();
   }
+
+  function handleNewAvatarLinkChange(e) {
+    console.log(e.target.value);
+    setUserAvatar(e.target.value);
+  }
+
   /////Modificar el Profile///
   function handleUpdateUser(data) {
     api
@@ -140,11 +146,11 @@ function App(props) {
       .catch((err) => console.error(err));
     closeAllPopups();
   }
-  function handleNewPlaceCaptionChange(e) {
+  function handleNewPlaceTitleChange(e) {
     setNewPlaceTitle(e.target.value);
   }
 
-  function handleNewPlaceChange(e) {
+  function handleNewPlaceLinkChange(e) {
     setNewPlaceLink(e.target.value);
   }
 
@@ -208,9 +214,9 @@ function App(props) {
           <ChangeAvatarForm
             onClose={closeAllPopups}
             onUpdateAvatar={handleChangeAvatar}
-            // userAvatar={userAvatar}
-            //newAvatarLink={newAvatarLink}
-            //onNewAvatarLinkChange={handleNewAvatarLinkChange}
+            newAvatarLink={userAvatar}
+            setNewAvatarLink={setUserAvatar}
+            onNewAvatarLinkChange={handleNewAvatarLinkChange}
           ></ChangeAvatarForm>
         </Popup>
 
@@ -225,8 +231,8 @@ function App(props) {
           <AddPlaceForm
             onClose={closeAllPopups}
             onAddPlaceSubmit={handleAddPlaceSubmit}
-            onNewPlaceTitleChange={handleNewPlaceCaptionChange}
-            onNewPlaceLinkChange={handleNewPlaceChange}
+            onNewPlaceTitleChange={handleNewPlaceTitleChange}
+            onNewPlaceLinkChange={handleNewPlaceLinkChange}
             newPlaceLink={newPlaceLink}
             newPlaceTitle={newPlaceTitle}
             setNewPlaceLink={setNewPlaceLink}
