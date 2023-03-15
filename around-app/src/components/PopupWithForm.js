@@ -1,8 +1,7 @@
 import React from "react";
-import Popup from "./Popup";
 
 function PopupWithForm(props) {
-  const { onClose, action, inputs, onSubmit } = props;
+  const { action, inputs, onSubmit } = props;
 
   return (
     <>

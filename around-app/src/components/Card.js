@@ -7,10 +7,10 @@ function Card(props) {
     link,
     cardName,
     cardLikes,
-    onCardClick,
+    //onCardClick,
     onCardLike,
-    onEraseCard,
-    onDeleteCardAsk,
+    //onEraseCard,
+    //onDeleteCardAsk,
   } = props;
 
   const currentUser = React.useContext(UserContext);
@@ -29,7 +29,7 @@ function Card(props) {
 
   function handleAskDelete() {
     props.onDeleteCardAsk(props);
-  }
+  } //de aquí viene la card de handle
 
   return (
     <div className="item">

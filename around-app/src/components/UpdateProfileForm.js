@@ -4,7 +4,6 @@ import { UserContext } from "../contexts/UserContext";
 
 export default function UpdateProfileForm(props) {
   const {
-    onClose,
     onUpdateUser,
     onUserNameChange,
     onUserDescriptionChange,

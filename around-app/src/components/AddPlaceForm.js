@@ -1,6 +1,6 @@
-import React, { useContext } from "react";
+import React from "react";
 import PopupWithForm from "./PopupWithForm";
-import { UserContext } from "../contexts/UserContext";
+//import { UserContext } from "../contexts/UserContext";
 
 export default function AddPlaceForm(props) {
   const {

@@ -4,7 +4,6 @@ import Main from "./Main";
 import Header from "./Header";
 import Footer from "./Footer";
 import Popup from "./Popup";
-import PopupWithForm from "./PopupWithForm";
 import DeleteCardForm from "./DeleteCardForm";
 import api from "../utils/api";
 import ImagePopup from "./ImagePopup";
@@ -29,7 +28,7 @@ function App(props) {
   const [userDescription, setUserDescription] = React.useState("");
   ///////////
   const [imagePic, setImagePic] = React.useState(false);
-  const [selectedCard, setSelectedCard] = React.useState("");
+  const [selectedCard, setSelectedCard] = React.useState({});
   const [eraseCardAsk, setEraseCardAsk] = React.useState(false);
   const [currentUser, setCurrentUser] = React.useState({});
 
@@ -55,7 +54,6 @@ function App(props) {
     api
       .getInitialCards()
       .then((cards) => {
-        console.log(cards);
         setCards(cards);
       })
       .catch((err) => console.error(err));
@@ -64,7 +62,7 @@ function App(props) {
   const renderCards = () =>
     cards.map((card) => {
       const { _id, owner, link, name, likes } = card;
-      //console.log(card);
+
       return (
         <Card
           key={_id}
@@ -97,18 +95,19 @@ function App(props) {
 
   function handleEraseAsk(card) {
     setEraseCardAsk(true);
-    setCurrentUser(card); //quizá aquí esté la falla
+    console.log(card);
+    setSelectedCard(card);
   }
   function handleChangeAvatar(data) {
+    console.log(data);
     api
       .handleChangeAvatar(data)
       .then((data) => setCurrentUser(data))
       .catch((err) => console.error(err));
     closeAllPopups();
   }
-  /////Modificar el Profile
+  /////Modificar el Profile///
   function handleUpdateUser(data) {
-    console.log("me vas a cambiar?");
     console.log(data);
     api
       .handleEditProfile(data)
@@ -143,12 +142,13 @@ function App(props) {
 
   /////////////////////////////////
   function handleDeleteCard(card) {
-    console.log(card);
+    console.log("delete card", card);
     api
       .handleDeleteCard(card.cardId)
       .then((deletedCardId) => {
-        console.log(deletedCardId);
+        return api.getInitialCards();
       })
+      .then((data) => setCards(data))
       .catch((err) => console.error(err));
 
     closeAllPopups();
@@ -177,6 +177,7 @@ function App(props) {
 
         <Popup isOpen={eraseCardAsk}>
           <DeleteCardForm
+            card={selectedCard}
             onEraseCard={handleDeleteCard}
             onClose={closeAllPopups}
           ></DeleteCardForm>
@@ -229,52 +230,3 @@ function App(props) {
 }
 
 export default App;
-
-/*      
-
-
-
-
-      <Popup isOpen={isAddPlacePopupOpen}>
-        <PopupWithForm
-          name="form-new-place"
-          title="Nuevo lugar"
-          action="Crear"
-          onClose={closeAllPopups}
-        >
-          <div className="form__field">
-            <input
-              type="text"
-              id="title"
-              className="form__input form__input_newplace-title popup__input"
-              placeholder="Título"
-              name="title"
-              required
-              minLength="2"
-              maxLength="30"
-            />
-            <span className="popup__error title-error"></span>
-          </div>
-          <div className="form__field">
-            <input
-              id="image"
-              className="form__input form__input_newplace-url popup__input"
-              placeholder="Enlace a la imagen"
-              name="image"
-              type="url"
-              required
-            />
-            <span className="popup__error image-error"></span>
-          </div>
-        </PopupWithForm>
-      </Popup>
-      <Popup isOpen={imagePic}>
-        <ImagePopup
-          cardInfoPopup={selectedCard}
-          onClose={closeAllPopups}
-        ></ImagePopup>
-      </Popup>
-
- 
-
-*/

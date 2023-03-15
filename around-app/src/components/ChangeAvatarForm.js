@@ -1,13 +1,12 @@
-import React, { useContext } from "react";
+import React from "react";
 import PopupWithForm from "./PopupWithForm";
 import { UserContext } from "../contexts/UserContext";
 
 export default function ChangeAvatarForm(props) {
-  const { inputs, onClose, onUpdateAvatar } = props;
+  const { onUpdateAvatar } = props;
 
   const currentUser = React.useContext(UserContext);
   const avatarRef = React.useRef(currentUser.avatar);
-
   function handleSubmit(e) {
     e.preventDefault();
 

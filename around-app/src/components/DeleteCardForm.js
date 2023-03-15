@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import PopupWithForm from "./PopupWithForm";
 import { UserContext } from "../contexts/UserContext";
 
@@ -10,7 +10,7 @@ export default function DeleteCardForm(props) {
   function handleSubmit(e) {
     e.preventDefault();
 
-    onEraseCard(currentUser);
+    onEraseCard(props.card);
   }
 
   return (
