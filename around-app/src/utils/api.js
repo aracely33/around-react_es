@@ -59,8 +59,8 @@ class API {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          name: `${value.nombre}`,
-          about: `${value.ocupación}`,
+          name: `${value.name}`,
+          about: `${value.about}`,
         }),
       }
     ).then((res) => {

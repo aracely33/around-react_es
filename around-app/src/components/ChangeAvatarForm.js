@@ -7,11 +7,12 @@ export default function ChangeAvatarForm(props) {
 
   const currentUser = React.useContext(UserContext);
   const avatarRef = React.useRef(currentUser.avatar);
+  console.log(currentUser);
   function handleSubmit(e) {
     e.preventDefault();
-
     onUpdateAvatar({
-      avatar: avatarRef.current.value,
+      avatar: "holi",
+      //avatar: props.userAvatar.current.value,
     });
   }
   return (
@@ -26,7 +27,9 @@ export default function ChangeAvatarForm(props) {
           placeholder: "Enlace a la imagen",
           name: "avatar",
           id: "form__input form__input_new-avatar-url popup__input",
+          //onChange: onNewAvatarLinkChange,
           ref: avatarRef,
+          //value: newAvatarLink,
           value: undefined,
         },
       ]}

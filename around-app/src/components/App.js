@@ -32,9 +32,8 @@ function App(props) {
   const [eraseCardAsk, setEraseCardAsk] = React.useState(false);
   const [currentUser, setCurrentUser] = React.useState({});
 
-  const [userAvatar, setUserAvatar] = React.useState(
-    "https://media.istockphoto.com/id/1434414228/es/foto/gato-triste-severo-aislado-sobre-fondo-blanco.jpg?b=1&s=170667a&w=0&k=20&c=aCW9PET915TnFZgylPXMxsk6Lz_4nYcSDPDqovDItr4="
-  );
+  const [userAvatar, setUserAvatar] = React.useState("");
+  //const [newAvatarLink, setNewAvatarLink] = React.useState({});
   const [cards, setCards] = React.useState([]);
   ////////
 
@@ -95,9 +94,10 @@ function App(props) {
 
   function handleEraseAsk(card) {
     setEraseCardAsk(true);
-    console.log(card);
     setSelectedCard(card);
   }
+  /////cambiar avatar
+
   function handleChangeAvatar(data) {
     console.log(data);
     api
@@ -108,10 +108,18 @@ function App(props) {
   }
   /////Modificar el Profile///
   function handleUpdateUser(data) {
-    console.log(data);
     api
       .handleEditProfile(data)
-      .then((data) => setCurrentUser(data))
+      .then((res) => {
+        api
+          .getUserInfo()
+          .then((info) => {
+            setCurrentUser(info);
+            setUserName(info.name);
+            setUserDescription(info.about);
+          })
+          .catch((err) => console.error(err));
+      })
       .catch((err) => console.error(err));
     closeAllPopups();
   }
@@ -200,6 +208,9 @@ function App(props) {
           <ChangeAvatarForm
             onClose={closeAllPopups}
             onUpdateAvatar={handleChangeAvatar}
+            // userAvatar={userAvatar}
+            //newAvatarLink={newAvatarLink}
+            //onNewAvatarLinkChange={handleNewAvatarLinkChange}
           ></ChangeAvatarForm>
         </Popup>
 

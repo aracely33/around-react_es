@@ -1,6 +1,5 @@
-import React, { useContext } from "react";
+import React from "react";
 import PopupWithForm from "./PopupWithForm";
-import { UserContext } from "../contexts/UserContext";
 
 export default function UpdateProfileForm(props) {
   const {
@@ -12,18 +11,12 @@ export default function UpdateProfileForm(props) {
     name,
     about,
   } = props;
-  const currentUser = React.useContext(UserContext);
-
-  /* React.useEffect(() => {
-    setUserName(currentUser.name);
-    setUserDescription(currentUser.about);
-  }, [currentUser]);*/
 
   function handleSubmit(e) {
     e.preventDefault();
     onUpdateUser({
-      name,
-      about,
+      name: name,
+      about: about,
     });
   }
 
