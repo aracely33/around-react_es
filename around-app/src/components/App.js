@@ -84,17 +84,21 @@ function App(props) {
       api
         .handleUnLikeClick(card._id)
         .then((newCard) => {
-          return api.getInitialCards();
+          setCards((state) =>
+            state.map((c) => (c._id === card._id ? newCard : c))
+          );
         })
-        .then((data) => setCards(data))
+
         .catch((err) => console.error(err));
     } else {
       api
-        .handleLikeClick(card._id)
+        .handleLikeClick(card._id, !isLiked)
         .then((newCard) => {
-          return api.getInitialCards();
+          setCards((state) =>
+            state.map((c) => (c._id === card._id ? newCard : c))
+          );
         })
-        .then((data) => setCards(data))
+
         .catch((err) => console.error(err));
     }
   }
