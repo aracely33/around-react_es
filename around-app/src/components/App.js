@@ -8,7 +8,7 @@ import DeleteCardForm from "./DeleteCardForm";
 import api from "../utils/api";
 import ImagePopup from "./ImagePopup";
 import Card from "./Card";
-import UpdateProfileForm from "./UpdateProfileForm";
+import EditProfilePopup from "./EditProfilePopup";
 import ChangeAvatarForm from "./ChangeAvatarForm";
 import AddPlaceForm from "./AddPlaceForm";
 
@@ -186,7 +186,6 @@ function App(props) {
       .handleDeleteCard(card.cardId)
       .then((deletedCardId) => {
         function dontDeleted(item) {
-          console.log(item);
           return item._id !== card.cardId;
         }
         const newCardArray = cards.filter(dontDeleted);
@@ -227,7 +226,7 @@ function App(props) {
         </Popup>
 
         <Popup isOpen={isEditProfilePopupOpen}>
-          <UpdateProfileForm
+          <EditProfilePopup
             onClose={closeAllPopups}
             onUpdateUser={handleUpdateUser}
             onUserNameChange={handleUserNameChange}
@@ -236,7 +235,7 @@ function App(props) {
             setUserName={setUserName}
             name={userName}
             about={userDescription}
-          ></UpdateProfileForm>
+          ></EditProfilePopup>
         </Popup>
 
         <Popup isOpen={isAvatarProfilePopupOpen}>

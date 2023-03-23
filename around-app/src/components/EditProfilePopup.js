@@ -1,7 +1,7 @@
 import React from "react";
 import PopupWithForm from "./PopupWithForm";
 
-export default function UpdateProfileForm(props) {
+export default function EditProfilePopup(props) {
   const {
     onUpdateUser,
     onUserNameChange,
