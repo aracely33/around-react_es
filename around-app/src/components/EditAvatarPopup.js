@@ -1,18 +1,20 @@
 import React from "react";
 import PopupWithForm from "./PopupWithForm";
+import { UserContext } from "../contexts/UserContext";
 
-export default function ChangeAvatarForm(props) {
+export default function EditAvatarPopup(props) {
   const {
     onNewAvatarLinkChange,
     newAvatarLink,
     onUpdateAvatar,
     setNewAvatarLink,
   } = props;
+  const currentUser = React.useContext(UserContext);
 
+  const avatarRef = React.useRef(currentUser.avatar);
   function handleSubmit(e) {
     e.preventDefault();
-    onUpdateAvatar({ newAvatarLink });
-    setNewAvatarLink("");
+    onUpdateAvatar({ avatar: avatarRef.current.value });
   }
 
   return (
@@ -27,9 +29,8 @@ export default function ChangeAvatarForm(props) {
           placeholder: "Enlace a la imagen",
           name: "avatar",
           id: "form__input form__input_new-avatar-url popup__input",
-          onChange: onNewAvatarLinkChange,
-
-          value: newAvatarLink,
+          ref: avatarRef,
+          value: undefined,
         },
       ]}
     />

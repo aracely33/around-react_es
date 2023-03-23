@@ -9,7 +9,7 @@ import api from "../utils/api";
 import ImagePopup from "./ImagePopup";
 import Card from "./Card";
 import EditProfilePopup from "./EditProfilePopup";
-import ChangeAvatarForm from "./ChangeAvatarForm";
+import EditAvatarPopup from "./EditAvatarPopup";
 import AddPlaceForm from "./AddPlaceForm";
 
 function App(props) {
@@ -126,16 +126,12 @@ function App(props) {
   }
   /////cambiar avatar
 
-  function handleChangeAvatar(data) {
+  function handleUpdateAvatar(data) {
     api
       .handleChangeAvatar(data)
       .then((data) => setCurrentUser(data))
       .catch((err) => console.error(err));
     closeAllPopups();
-  }
-
-  function handleNewAvatarLinkChange(e) {
-    setUserAvatar(e.target.value);
   }
 
   /////Modificar el Profile///
@@ -239,13 +235,10 @@ function App(props) {
         </Popup>
 
         <Popup isOpen={isAvatarProfilePopupOpen}>
-          <ChangeAvatarForm
+          <EditAvatarPopup
             onClose={closeAllPopups}
-            onUpdateAvatar={handleChangeAvatar}
-            newAvatarLink={userAvatar}
-            setNewAvatarLink={setUserAvatar}
-            onNewAvatarLinkChange={handleNewAvatarLinkChange}
-          ></ChangeAvatarForm>
+            onUpdateAvatar={handleUpdateAvatar}
+          ></EditAvatarPopup>
         </Popup>
 
         <Popup isOpen={imagePic}>

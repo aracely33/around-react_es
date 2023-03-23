@@ -134,7 +134,7 @@ class API {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          avatar: `${value.newAvatarLink}`,
+          avatar: `${value.avatar}`,
         }),
       }
     ).then((res) => {
