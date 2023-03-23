@@ -181,13 +181,17 @@ function App(props) {
   }
 
   /////////////////////////////////
-  function handleDeleteCard(card) {
+  function handleCardDelete(card) {
     api
       .handleDeleteCard(card.cardId)
       .then((deletedCardId) => {
-        return api.getInitialCards();
+        function dontDeleted(item) {
+          console.log(item);
+          return item._id !== card.cardId;
+        }
+        const newCardArray = cards.filter(dontDeleted);
+        setCards(newCardArray);
       })
-      .then((data) => setCards(data))
       .catch((err) => console.error(err));
 
     closeAllPopups();
@@ -217,7 +221,7 @@ function App(props) {
         <Popup isOpen={eraseCardAsk}>
           <DeleteCardForm
             card={selectedCard}
-            onEraseCard={handleDeleteCard}
+            onEraseCard={handleCardDelete}
             onClose={closeAllPopups}
           ></DeleteCardForm>
         </Popup>
