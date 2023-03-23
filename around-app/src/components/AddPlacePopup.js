@@ -1,8 +1,7 @@
 import React from "react";
 import PopupWithForm from "./PopupWithForm";
-//import { UserContext } from "../contexts/UserContext";
 
-export default function AddPlaceForm(props) {
+export default function AddPlacePopup(props) {
   const {
     onClose,
     onAddPlaceSubmit,

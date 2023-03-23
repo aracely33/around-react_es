@@ -10,7 +10,7 @@ import ImagePopup from "./ImagePopup";
 import Card from "./Card";
 import EditProfilePopup from "./EditProfilePopup";
 import EditAvatarPopup from "./EditAvatarPopup";
-import AddPlaceForm from "./AddPlaceForm";
+import AddPlacePopup from "./AddPlacePopup";
 
 function App(props) {
   const [isAvatarProfilePopupOpen, setAvatarProfilePopupOpen] = React.useState(
@@ -249,7 +249,7 @@ function App(props) {
         </Popup>
 
         <Popup isOpen={isAddPlacePopupOpen}>
-          <AddPlaceForm
+          <AddPlacePopup
             onClose={closeAllPopups}
             onAddPlaceSubmit={handleAddPlaceSubmit}
             onNewPlaceTitleChange={handleNewPlaceTitleChange}
@@ -260,7 +260,7 @@ function App(props) {
             setNewPlaceTitle={setNewPlaceTitle}
             name={userName}
             about={userDescription}
-          ></AddPlaceForm>
+          ></AddPlacePopup>
         </Popup>
       </UserContext.Provider>
     </>
