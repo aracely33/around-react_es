@@ -69,11 +69,11 @@
 @import url(./blocks/form/__heading/form__heading.css);
 @import url(./blocks/form/__heading/_form-type/form__heading_type-form-delete-card.css);
 @import url(./blocks/form/__input/form__input.css);
-@import url(./blocks/form/__input/_info/form__input_info-name.css);
-@import url(./blocks/form/__input/_info/form__input_info-occupation.css);
-@import url(./blocks/form/__input/_newplace/form__input_newplace-title.css);
-@import url(./blocks/form/__input/_newplace/form__input_newplace-url.css);
-@import url(./blocks/form/__input/_new-avatar-url/form__input_new-avatar-url.css);
+@import url(./blocks/form/__input/form__input_avatar.css);
+@import url(./blocks/form/__input/form__input_name.css);
+@import url(./blocks/form/__input/form__input_about.css);
+@import url(./blocks/form/__input/form__input_newPlaceCaption.css);
+@import url(./blocks/form/__input/form__input_newPlace.css);
 
 @import url(./blocks/form/__Button/form__Button.css);
 @import url(./blocks/form/__submit/form__submit.css);

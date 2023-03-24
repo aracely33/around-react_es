@@ -3,12 +3,7 @@ import PopupWithForm from "./PopupWithForm";
 import { UserContext } from "../contexts/UserContext";
 
 export default function EditAvatarPopup(props) {
-  const {
-    onNewAvatarLinkChange,
-    newAvatarLink,
-    onUpdateAvatar,
-    setNewAvatarLink,
-  } = props;
+  const { onUpdateAvatar } = props;
   const currentUser = React.useContext(UserContext);
 
   const avatarRef = React.useRef(currentUser.avatar);

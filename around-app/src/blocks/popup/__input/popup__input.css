@@ -11,7 +11,7 @@
   border-right: 0;
   color: #000000;
   outline-color: rgb(79, 113, 177);
-  position: relative;
+  /* position: relative;*/
 }
 
 @media screen and (max-width: 321px) {
