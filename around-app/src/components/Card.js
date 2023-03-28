@@ -17,7 +17,7 @@ function Card(props) {
 
   function handleAskDelete() {
     props.onDeleteCardAsk(props);
-  } //de aquí viene la card de handle
+  }
 
   return (
     <div className="item">

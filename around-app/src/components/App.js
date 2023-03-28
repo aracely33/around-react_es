@@ -20,13 +20,12 @@ function App(props) {
     false
   );
 
-  ////////
   const [isAddPlacePopupOpen, setAddPlacePopupOpen] = React.useState(false);
   const [newPlaceLink, setNewPlaceLink] = React.useState("");
   const [newPlaceTitle, setNewPlaceTitle] = React.useState("");
   const [userName, setUserName] = React.useState("");
   const [userDescription, setUserDescription] = React.useState("");
-  ///////////
+
   const [imagePic, setImagePic] = React.useState(false);
   const [selectedCard, setSelectedCard] = React.useState({});
   const [eraseCardAsk, setEraseCardAsk] = React.useState(false);
@@ -34,8 +33,6 @@ function App(props) {
 
   const [userAvatar, setUserAvatar] = React.useState("");
   const [cards, setCards] = React.useState([]);
-
-  ////////
 
   React.useEffect(() => {
     api
@@ -160,7 +157,7 @@ function App(props) {
     setUserDescription(e.target.value);
   }
 
-  /////////Agregar un nuevo Lugar//////
+  //Agregar un nuevo Lugar
   function handleAddPlaceSubmit(data) {
     api
       .handleAddCard(data)
@@ -176,7 +173,6 @@ function App(props) {
     setNewPlaceLink(e.target.value);
   }
 
-  /////////////////////////////////
   function handleCardDelete(card) {
     api
       .handleDeleteCard(card.cardId)

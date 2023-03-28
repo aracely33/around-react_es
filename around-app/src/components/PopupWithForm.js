@@ -7,7 +7,6 @@ function PopupWithForm(props) {
   const [errors, setErrors] = React.useState({});
   function handleInput(event) {
     console.log(event.target);
-    //console.log(event.target.name);
 
     if (!event.target.validity.valid) {
       const err = {};
@@ -21,7 +20,6 @@ function PopupWithForm(props) {
     }
     console.log(errors);
   }
-  //console.log(errors);
 
   function hasErrors() {
     return Object.keys(errors).some((item) => {
@@ -60,7 +58,6 @@ function PopupWithForm(props) {
                         className={`form__input  popup__input form__input_${name} ${
                           errors.name ? "popup__input_type_error" : ""
                         }`}
-                        //className="form__input form__input_info-name popup__input popup__input_type_error"
                         placeholder={placeholder}
                         name={name}
                         key={id}
