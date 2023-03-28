@@ -1,7 +1,7 @@
 import React from "react";
 
 function PopupWithForm(props) {
-  const { action, inputs, onSubmit } = props;
+  /*const { action, inputs, onSubmit } = props;*/
 
   ///validación de formulario
   const [errors, setErrors] = React.useState({});
@@ -35,7 +35,7 @@ function PopupWithForm(props) {
           <fieldset className="form__fields form__set">
             <h2 className="form__heading">{props.title}</h2>
             <div className="form__field">
-              {inputs.map(
+              {props.inputs.map(
                 ({
                   type,
                   placeholder,
@@ -82,10 +82,10 @@ function PopupWithForm(props) {
                 hasErrors() ? "popup__button_disabled" : ""
               }`}
               type="submit"
-              onClick={(e) => onSubmit(e)}
+              onClick={(e) => props.onSubmit(e)}
               disabled={hasErrors()}
             >
-              {action}
+              {props.action}
             </button>
           </fieldset>
         </form>
