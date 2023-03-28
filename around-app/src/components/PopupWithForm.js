@@ -6,12 +6,9 @@ function PopupWithForm(props) {
   ///validación de formulario
   const [errors, setErrors] = React.useState({});
   function handleInput(event) {
-    console.log(event.target);
-
     if (!event.target.validity.valid) {
       const err = {};
       err[event.target.name] = event.target.validationMessage;
-      console.log(err);
       setErrors({ ...errors, ...err });
     } else {
       const err = {};
@@ -22,7 +19,7 @@ function PopupWithForm(props) {
 
   function hasErrors() {
     return Object.keys(errors).some((item) => {
-      return errors[item] != "";
+      return errors[item] !== "";
     });
   }
 
