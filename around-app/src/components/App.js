@@ -12,7 +12,7 @@ import EditProfilePopup from "./EditProfilePopup";
 import EditAvatarPopup from "./EditAvatarPopup";
 import AddPlacePopup from "./AddPlacePopup";
 
-function App(props) {
+function App() {
   const [isAvatarProfilePopupOpen, setAvatarProfilePopupOpen] = React.useState(
     false
   );
@@ -31,7 +31,6 @@ function App(props) {
   const [eraseCardAsk, setEraseCardAsk] = React.useState(false);
   const [currentUser, setCurrentUser] = React.useState({});
 
-  const [userAvatar, setUserAvatar] = React.useState("");
   const [cards, setCards] = React.useState([]);
 
   React.useEffect(() => {
@@ -41,7 +40,6 @@ function App(props) {
         setCurrentUser(info);
         setUserName(info.name);
         setUserDescription(info.about);
-        setUserAvatar(info.avatar);
       })
       .catch((err) => console.error(err));
   }, []);
@@ -200,7 +198,7 @@ function App(props) {
   return (
     <>
       <UserContext.Provider value={currentUser}>
-        <Header></Header>
+        <Header />
         <Main
           onEditProfileClick={handleEditProfileClick}
           onEditAvatarClick={handleEditAvatarClick}
