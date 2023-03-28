@@ -12,7 +12,7 @@ export default function AddPlacePopup(props) {
     //setNewPlaceLink,
     //setNewPlaceTitle,
   } = props;
-  console.log(props);
+
   function handleSubmit(e) {
     e.preventDefault();
     props.onAddPlaceSubmit({ newPlaceTitle, newPlaceLink });
