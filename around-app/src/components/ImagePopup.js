@@ -1,8 +1,6 @@
 import React from "react";
 
 function ImagePopup(props) {
-  const { cardInfoPopup } = props;
-
   return (
     <div className="popup__container popup__container_function-image">
       <button
@@ -11,11 +9,11 @@ function ImagePopup(props) {
         onClick={props.onClose}
       ></button>
       <img
-        src={cardInfoPopup.link}
-        alt={cardInfoPopup.cardName}
+        src={`${props.cardInfoPopup.link}`}
+        alt={props.cardInfoPopup.cardName}
         className="popup__image"
       />
-      <p className="popup__imagedescription">{cardInfoPopup.cardName}</p>
+      <p className="popup__imagedescription">{props.cardInfoPopup.cardName}</p>
     </div>
   );
 }
