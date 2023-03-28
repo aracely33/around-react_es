@@ -2,12 +2,6 @@ import React from "react";
 import { UserContext } from "../contexts/UserContext";
 
 function Main(props) {
-  /*const {
-    onEditAvatarClick,
-    onEditProfileClick,
-    onAddPlaceClick,
-    renderCards,
-  } = props;*/
   const currentUser = React.useContext(UserContext);
 
   return (

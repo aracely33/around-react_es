@@ -1,8 +1,6 @@
 import React from "react";
 
 function PopupWithForm(props) {
-  /*const { action, inputs, onSubmit } = props;*/
-
   ///validación de formulario
   const [errors, setErrors] = React.useState({});
   function handleInput(event) {
