@@ -2,12 +2,12 @@ import React from "react";
 import { UserContext } from "../contexts/UserContext";
 
 function Main(props) {
-  const {
+  /*const {
     onEditAvatarClick,
     onEditProfileClick,
     onAddPlaceClick,
     renderCards,
-  } = props;
+  } = props;*/
   const currentUser = React.useContext(UserContext);
 
   return (
@@ -21,7 +21,7 @@ function Main(props) {
             <button
               className="profile__avatar-edit-button"
               type="butt on"
-              onClick={onEditAvatarClick}
+              onClick={props.onEditAvatarClick}
             ></button>
           </div>
           <div className="profile__info">
@@ -30,7 +30,7 @@ function Main(props) {
               <button
                 type="button"
                 className="profile__info-edit-button pointer"
-                onClick={onEditProfileClick}
+                onClick={props.onEditProfileClick}
               ></button>
             </div>
             <p className="profile__info-occupation">{currentUser.about}</p>
@@ -40,11 +40,11 @@ function Main(props) {
             <button
               type="button"
               className="profile__add-button pointer"
-              onClick={onAddPlaceClick}
+              onClick={props.onAddPlaceClick}
             ></button>
           </div>
         </div>
-        <div className="gallery">{renderCards()}</div>
+        <div className="gallery">{props.renderCards()}</div>
       </div>
     </>
   );
