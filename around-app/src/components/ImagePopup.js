@@ -1,14 +1,14 @@
 import React from "react";
 
 function ImagePopup(props) {
-  const { cardInfoPopup, onClose } = props;
+  const { cardInfoPopup } = props;
 
   return (
     <div className="popup__container popup__container_function-image">
       <button
         type="button"
         className="close-button pointer"
-        onClick={onClose}
+        onClick={props.onClose}
       ></button>
       <img
         src={cardInfoPopup.link}

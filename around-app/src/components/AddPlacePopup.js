@@ -2,16 +2,7 @@ import React from "react";
 import PopupWithForm from "./PopupWithForm";
 
 export default function AddPlacePopup(props) {
-  const {
-    //onClose,
-    //onAddPlaceSubmit,
-    //onNewPlaceTitleChange,
-    //onNewPlaceLinkChange,
-    newPlaceLink,
-    newPlaceTitle,
-    //setNewPlaceLink,
-    //setNewPlaceTitle,
-  } = props;
+  const { newPlaceLink, newPlaceTitle } = props;
 
   function handleSubmit(e) {
     e.preventDefault();

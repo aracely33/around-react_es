@@ -2,8 +2,6 @@ import React from "react";
 import { UserContext } from "../contexts/UserContext";
 
 function Card(props) {
-  //const { cardOwnerId, link, cardName, onCardLike, cardLikes } = props;
-
   const currentUser = React.useContext(UserContext);
   const isOwn = props.cardOwnerId === currentUser._id;
   const cardButtonTrashStyle = isOwn
