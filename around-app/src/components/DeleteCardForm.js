@@ -2,12 +2,12 @@ import React from "react";
 import PopupWithForm from "./PopupWithForm";
 
 export default function DeleteCardForm(props) {
-  const { onClose, onEraseCard } = props;
+  // const { onClose, onEraseCard } = props;
 
   function handleSubmit(e) {
     e.preventDefault();
 
-    onEraseCard(props.card);
+    props.onEraseCard(props.card);
   }
 
   return (
@@ -16,7 +16,7 @@ export default function DeleteCardForm(props) {
       action="Sí"
       onSubmit={handleSubmit}
       inputs={[]}
-      onClose={onClose}
+      onClose={props.onClose}
     />
   );
 }
