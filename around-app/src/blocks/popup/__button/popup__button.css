@@ -1,7 +1,8 @@
 .popup__button {
-  width: 100%;
+  min-width: -moz-available;
+  min-width: -webkit-fill-available;
+  min-width: fill-available;
   border: none;
-  max-width: -webkit-fill-available;
   background: #000000;
   border-radius: 2px;
   font-family: "Inter";
@@ -22,7 +23,6 @@
 
 @media screen and (max-width: 321px) {
   .popup__button {
-    width: 100%;
     padding: 14px 31.56% 14px 31.91%;
   }
 }

@@ -12,5 +12,6 @@
   .form__heading {
     margin: 0 0 30px 0;
     font-size: 15px;
+    min-width: 238px;
   }
 }

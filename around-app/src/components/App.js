@@ -129,7 +129,7 @@ function App() {
     closeAllPopups();
   }
 
-  /////Modificar el Profile///
+  /////Modificar el Profile
   function handleUpdateUser(data) {
     api
       .handleEditProfile(data)
