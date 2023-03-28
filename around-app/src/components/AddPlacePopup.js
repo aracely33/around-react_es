@@ -3,27 +3,27 @@ import PopupWithForm from "./PopupWithForm";
 
 export default function AddPlacePopup(props) {
   const {
-    onClose,
-    onAddPlaceSubmit,
-    onNewPlaceTitleChange,
-    onNewPlaceLinkChange,
+    //onClose,
+    //onAddPlaceSubmit,
+    //onNewPlaceTitleChange,
+    //onNewPlaceLinkChange,
     newPlaceLink,
     newPlaceTitle,
-    setNewPlaceLink,
-    setNewPlaceTitle,
+    //setNewPlaceLink,
+    //setNewPlaceTitle,
   } = props;
-
+  console.log(props);
   function handleSubmit(e) {
     e.preventDefault();
-    onAddPlaceSubmit({ newPlaceTitle, newPlaceLink });
-    setNewPlaceLink("");
-    setNewPlaceTitle("");
+    props.onAddPlaceSubmit({ newPlaceTitle, newPlaceLink });
+    props.setNewPlaceLink("");
+    props.setNewPlaceTitle("");
   }
   return (
     <PopupWithForm
       title="Nuevo lugar"
       action="Guardar"
-      onClose={onClose}
+      onClose={props.onClose}
       onSubmit={handleSubmit}
       inputs={[
         {
@@ -33,7 +33,7 @@ export default function AddPlacePopup(props) {
           id: "popup__input_new-place-title",
           minLength: "2",
           maxLength: "30",
-          onChange: onNewPlaceTitleChange,
+          onChange: props.onNewPlaceTitleChange,
           value: newPlaceTitle,
         },
         {
@@ -41,7 +41,7 @@ export default function AddPlacePopup(props) {
           placeholder: "Enlace a la imagen",
           name: "newPlace",
           id: "popup__input_new-place-pic",
-          onChange: onNewPlaceLinkChange,
+          onChange: props.onNewPlaceLinkChange,
           value: newPlaceLink,
         },
       ]}
