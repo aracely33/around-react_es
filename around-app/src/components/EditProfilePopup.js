@@ -2,17 +2,11 @@ import React from "react";
 import PopupWithForm from "./PopupWithForm";
 
 export default function EditProfilePopup(props) {
-  const {
-    onUpdateUser,
-    onUserNameChange,
-    onUserDescriptionChange,
-    name,
-    about,
-  } = props;
+  const { name, about } = props;
 
   function handleSubmit(e) {
     e.preventDefault();
-    onUpdateUser({
+    props.onUpdateUser({
       name: name,
       about: about,
     });
@@ -33,7 +27,7 @@ export default function EditProfilePopup(props) {
           minLength: "2",
           maxLength: "40",
           value: name || "",
-          onChange: onUserNameChange,
+          onChange: props.onUserNameChange,
         },
         {
           type: "text",
@@ -43,7 +37,7 @@ export default function EditProfilePopup(props) {
           minLength: "2",
           maxLength: "200",
           value: about || "",
-          onChange: onUserDescriptionChange,
+          onChange: props.onUserDescriptionChange,
         },
       ]}
     />
