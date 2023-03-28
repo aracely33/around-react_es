@@ -113,7 +113,7 @@ function App() {
     setSelectedCard(card);
     setImagePic(true);
   }
-  ///Soporte para eleiminar tarjetas
+  ///Soporte para eliminar tarjetas
 
   function handleEraseAsk(card) {
     setEraseCardAsk(true);

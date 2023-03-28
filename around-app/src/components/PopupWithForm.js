@@ -18,7 +18,6 @@ function PopupWithForm(props) {
       err[event.target.name] = "";
       setErrors({ ...errors, ...err });
     }
-    console.log(errors);
   }
 
   function hasErrors() {
