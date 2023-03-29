@@ -1,8 +1,4 @@
 .popup__button {
-  /*min-width: -moz-available;
-  min-width: -webkit-fill-available;
-  min-width: fill-available;*/
-  min-width: stretch;
   border: none;
   background: #000000;
   border-radius: 2px;
