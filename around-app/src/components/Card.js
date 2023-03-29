@@ -34,16 +34,16 @@ function Card(props) {
       <div className="item__place-info">
         <div className="item__place-info-container">
           <p className="item__place-info-name">{props.cardName}</p>
-          <div className="item__likes-container">
-            <button
-              type="button"
-              className={`item__place-like-button pointer ${
-                isLiked ? "item__place-like-button_active" : ""
-              }`}
-              onClick={props.onCardLike}
-            ></button>
-            <p className="item__likes-number">{props.cardLikes.length}</p>
-          </div>
+        </div>
+        <div className="item__likes-container">
+          <button
+            type="button"
+            className={`item__place-like-button pointer ${
+              isLiked ? "item__place-like-button_active" : ""
+            }`}
+            onClick={props.onCardLike}
+          ></button>
+          <p className="item__likes-number">{props.cardLikes.length}</p>
         </div>
       </div>
     </div>
